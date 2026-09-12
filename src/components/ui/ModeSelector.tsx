@@ -17,7 +17,7 @@ export function ModeSelector({
   return (
     <div
       className={cn(
-        "relative flex w-full rounded-full transition-colors duration-500",
+        "relative flex w-full rounded-full overflow-hidden transition-colors duration-500",
         modeStyles[currentMode].bgPrimary
       )}
     >

@@ -1,6 +1,5 @@
 import { AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { BackgroundBlob } from "./components/BackgroundBlob";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Info } from "./components/Info";
@@ -22,7 +21,7 @@ export default function App() {
   return (
     <div
       className={cn(
-        "relative flex h-dvh min-h-0 w-full flex-col overflow-hidden font-helvetica transition-colors duration-500",
+        "relative flex flex-col h-dvh w-full font-helvetica transition-colors duration-500",
         modeStyles[currentMode].bgSurface,
         modeStyles[currentMode].text
       )}
@@ -32,10 +31,7 @@ export default function App() {
         onInfoButtonClick={openInfo}
       />
 
-      <main className="relative flex-1 flex flex-col overflow-hidden">
-        <BackgroundBlob />
-        <Session />
-      </main>
+      <Session />
 
       <Footer />
 

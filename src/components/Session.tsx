@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { modeStyles } from "../lib/consts";
 import { cn } from "../lib/utils";
+import { Blob } from "./three/Blob";
 import {
   advanceSession,
   decreaseCycles,
@@ -19,6 +20,7 @@ import { MotionInSpan } from "./motion/MotionInSpan";
 import { CycleSelector } from "./ui/CycleSelector";
 import { MainButton } from "./ui/MainButton";
 import { ModeSelector } from "./ui/ModeSelector";
+import { Canvas } from "@react-three/fiber";
 
 export function Session() {
   const { t } = useTranslation();
@@ -86,7 +88,7 @@ export function Session() {
           key="active"
           transition={{ duration: 1, delay: 0.4, ease: "easeInOut" }}
           className={cn(
-            "relative flex h-full w-full items-center justify-center px-4",
+            "relative flex h-full w-full items-center justify-center",
             modeStyles[currentMode].text,
           )}
         >
@@ -94,7 +96,7 @@ export function Session() {
             <MotionInSpan
               key={phaseIndex}
               transition={{ duration: 0.5, ease: "easeIn" }}
-              className="absolute text-[clamp(2.5rem,13vmin,4.5rem)] tracking-tight [word-spacing:-0.15em] text-center whitespace-pre-line"
+              className="absolute text-[clamp(2.5rem,13vmin,4.5rem)] tracking-tight [word-spacing:-0.15em] text-center"
             >
               {t(`session.phases.${currentPhase.label}`)}
             </MotionInSpan>
@@ -109,7 +111,7 @@ export function Session() {
           key="done"
           transition={{ duration: 1.2, ease: "easeInOut" }}
           className={cn(
-            "absolute flex flex-col items-center justify-center text-[clamp(1.75rem,9vmin,3.25rem)] tracking-tight text-center w-full h-full px-4",
+            "absolute flex flex-col items-center justify-center text-[clamp(1.75rem,9vmin,3.25rem)] tracking-tight text-center w-full h-full",
             {
               relax: "leading-10.5",
               focus: "leading-9.5",
@@ -130,39 +132,45 @@ export function Session() {
   }
 
   return (
-    <div className="relative flex-1 w-full h-full tracking-tight">
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-        <div className="relative flex items-center justify-center w-[98vmin] max-w-160 aspect-square">
+    <div className="flex h-full w-full items-center justify-center">
+      <div className="flex flex-col h-full w-full max-w-120">
+        <div className="relative w-full h-26">
+          <MotionFade
+            visible={!isSessionActive}
+            duration={0.5}
+            className="absolute inset-0 flex flex-col items-center justify-center gap-1 text-center"
+          >
+            <div className="text-[clamp(1.25rem,5vw,1.875rem)] leading-tight font-semibold">
+              {t("session.title")}
+            </div>
+            <ModeSelector currentMode={currentMode} onModeChange={setMode} />
+          </MotionFade>
+
+          <MotionFade
+            visible={sessionStage === "prepare"}
+            duration={sessionStage === "prepare" ? 1.5 : 0.2}
+            className="absolute inset-0 flex flex-col items-center justify-center text-center text-[clamp(2rem,5vw,3rem)] leading-6"
+          >
+            {t("session.prepare")}
+          </MotionFade>
+        </div>
+
+        <div className="relative flex flex-1 w-full">
+
+          <div className="absolute inset-0 pointer-events-none">
+            <Canvas camera={{ position: [0, 0, 22], fov: 30 }}>
+              <ambientLight intensity={1.5} />
+              <directionalLight position={[75, 75, 5]} intensity={0.8} />
+              <directionalLight position={[-5, -5, 2]} intensity={1.8} />
+              <Blob />
+            </Canvas>
+          </div>
           <AnimatePresence mode="wait">
             {renderCircleContent()}
           </AnimatePresence>
         </div>
-      </div>
 
-      <div className="absolute top-0 left-0 w-full flex justify-center z-20 pointer-events-none pt-2 sm:pt-4">
-        <div className="relative flex flex-col w-full max-w-122 items-center px-5 sm:px-0">
-          <MotionFade visible={!isSessionActive} duration={0.5}>
-            <div className="flex flex-col items-center w-full pointer-events-auto">
-              <div className="flex text-3xl">{t("session.title")}</div>
-              <ModeSelector
-                currentMode={currentMode}
-                onModeChange={setMode}
-              />
-            </div>
-          </MotionFade>
-
-          <MotionFade visible={sessionStage === "prepare"} duration={sessionStage === "prepare" ? 1.5 : sessionStage === "active" ? 1.5 : 0.2}>
-            <div className="absolute top-0 left-0 right-0 flex flex-col items-center w-full text-center">
-              <div className="flex text-[6.5vmin] sm:text-5xl tracking-tight leading-[37.2px]">
-                {t("session.prepare")}
-              </div>
-            </div>
-          </MotionFade>
-        </div>
-      </div>
-
-      <div className="absolute bottom-0 left-0 w-full flex justify-center z-20 pointer-events-none pb-4 sm:pb-6">
-        <div className="flex w-full max-w-122 items-end px-5 sm:px-0 gap-2 pointer-events-auto">
+        <div className="flex w-full items-end gap-2">
           <MainButton
             currentMode={currentMode}
             onStart={startSession}
