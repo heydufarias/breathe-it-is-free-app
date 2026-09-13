@@ -22,7 +22,7 @@ import { MainButton } from "./ui/MainButton";
 import { ModeSelector } from "./ui/ModeSelector";
 import { Canvas } from "@react-three/fiber";
 
-export function Session() {
+export function MainContent() {
   const { t } = useTranslation();
 
   const currentMode = state.use((value) => value.currentMode);
