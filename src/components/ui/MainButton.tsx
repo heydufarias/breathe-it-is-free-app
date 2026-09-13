@@ -38,7 +38,7 @@ export function MainButton({
       onClick={handleClick}
       disabled={disabled}
       className={cn(
-        "relative flex h-18 flex-19 items-center p-1 rounded-full cursor-pointer overflow-hidden",
+        "relative flex flex-16 h-[clamp(4rem,6vh,9rem)] items-center rounded-full cursor-pointer overflow-hidden",
         isSessionActive ? "justify-end" : "justify-start"
       )}
     >

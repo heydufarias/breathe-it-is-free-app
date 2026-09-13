@@ -32,7 +32,7 @@ export function CycleSelector({
     <div className="flex flex-11 flex-col min-w-0 items-start text-4xl">
       <div className="pl-6 text-xl pb-0.5 leading-6">{t("Cycles")}</div>
 
-      <div className="relative flex h-18 w-full items-center rounded-full overflow-hidden">
+      <div className="relative flex h-[clamp(4rem,6vh,9rem)] w-full items-center rounded-full overflow-hidden">
         <MotionFade
           visible={!isSessionActive}
           className={cn(
