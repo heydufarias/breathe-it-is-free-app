@@ -34,7 +34,8 @@ export function ModeSelector({
           key={mode}
           onClick={() => onModeChange(mode)}
           className={cn(
-            "flex flex-1 h-[clamp(4rem,6vh,9rem)] items-center justify-center text-center text-2xl z-10 cursor-pointer transition-colors duration-500",
+            "flex flex-1 h-[clamp(4rem,6vh,9rem)] items-center justify-center",
+            "text-[clamp(1.4rem,4vmin,1.5rem)] z-10 cursor-pointer transition-colors duration-500",
             currentMode === mode ? modeStyles[currentMode].text : "text-white/60"
           )}
         >
