@@ -27,7 +27,10 @@ export function MainButton({
     if (disabled) return;
     if (isSessionActive) {
       onFinish();
-    } else onStart();
+      return;
+    }
+
+    onStart();
   }
 
   return (
