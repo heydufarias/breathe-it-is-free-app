@@ -13,6 +13,7 @@ interface CycleSelectorProps {
   onDecrease: () => void;
   onIncrease: () => void;
   isSessionActive: boolean;
+  className?: string;
 }
 
 export function CycleSelector({
@@ -22,6 +23,7 @@ export function CycleSelector({
   onDecrease,
   onIncrease,
   isSessionActive,
+  className,
 }: CycleSelectorProps) {
   const { t } = useTranslation();
 
@@ -29,21 +31,20 @@ export function CycleSelector({
   const canIncrease = cycles < 9;
 
   return (
-    <div className="flex flex-11 flex-col min-w-0 items-start text-4xl">
-      <div className="pl-6 text-xl pb-0.5 leading-6">{t("Cycles")}</div>
+    <div className={cn("flex flex-col w-full items-start", className)}>
+      <div className="pl-6 text-[clamp(1.2rem,3vmin,1.25rem)] pb-0.5 leading-6">
+        {t("Cycles")}
+      </div>
 
-      <div className="relative flex h-[clamp(4rem,6vh,9rem)] w-full items-center rounded-full overflow-hidden">
+      <div
+        className={cn(
+          "relative flex h-[clamp(4rem,6vh,9rem)] w-full items-center justify-center rounded-full overflow-hidden transition-colors duration-500",
+          isSessionActive ? "bg-white" : modeStyles[currentMode].bgPrimary
+        )}
+      >
         <MotionFade
           visible={!isSessionActive}
-          className={cn(
-            "absolute inset-0 z-0 transition-colors duration-500",
-            modeStyles[currentMode].bgPrimary
-          )}
-        />
-
-        <MotionFade
-          visible={!isSessionActive}
-          className="absolute inset-0 z-10 flex w-full items-center justify-between"
+          className="absolute inset-0 flex w-full items-center text-[clamp(2rem,5vmin,2.2rem)] z-10"
         >
           <motion.button
             onClick={onDecrease}
@@ -51,20 +52,20 @@ export function CycleSelector({
             whileTap={canDecrease ? { scale: 0.8 } : undefined}
             transition={{ duration: 0.15, ease: "easeInOut" }}
             className={cn(
-              "flex h-16 w-16 items-center justify-center rounded-full will-change-transform",
+              "flex flex-1 h-full items-center justify-center rounded-full will-change-transform",
               canDecrease ? "cursor-pointer" : "cursor-default"
             )}
           >
             <ChevronLeft
               className={cn(
-                "h-9 w-9 transition-colors",
+                "h-8 w-8 md:h-9 md:w-9 transition-colors",
                 canDecrease ? "text-white" : "text-white/60"
               )}
               strokeWidth={2.5}
             />
           </motion.button>
 
-          <span className="flex min-w-16 items-baseline justify-center text-white">
+          <span className="flex flex-1 items-baseline justify-center text-white">
             <motion.span
               key={cycles}
               initial={{ scale: 0.9 }}
@@ -81,13 +82,13 @@ export function CycleSelector({
             whileTap={canIncrease ? { scale: 0.8 } : undefined}
             transition={{ duration: 0.15, ease: "easeInOut" }}
             className={cn(
-              "flex h-16 w-16 items-center justify-center rounded-full will-change-transform",
+              "flex flex-1 h-full items-center justify-center rounded-full will-change-transform",
               canIncrease ? "cursor-pointer" : "cursor-default"
             )}
           >
             <ChevronRight
               className={cn(
-                "h-9 w-9 transition-colors",
+                "h-8 w-8 md:h-9 md:w-9 transition-colors",
                 canIncrease ? "text-white" : "text-white/60"
               )}
               strokeWidth={2.5}
@@ -97,13 +98,8 @@ export function CycleSelector({
 
         <MotionFade
           visible={isSessionActive}
-          className="absolute inset-0 z-0 bg-white"
-        />
-
-        <MotionFade
-          visible={isSessionActive}
           className={cn(
-            "absolute inset-0 z-10 flex w-full items-center justify-center",
+            "absolute inset-0 flex w-full items-center justify-center text-[clamp(2rem,5vmin,2.2rem)] z-10",
             `text-[var(--color-${currentMode})]`
           )}
         >

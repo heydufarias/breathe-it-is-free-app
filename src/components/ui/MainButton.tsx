@@ -12,6 +12,7 @@ interface MainButtonProps {
   onFinish: () => void;
   isSessionActive: boolean;
   disabled?: boolean;
+  className?: string;
 }
 
 export function MainButton({
@@ -20,83 +21,50 @@ export function MainButton({
   isSessionActive,
   onFinish,
   disabled,
+  className,
 }: MainButtonProps) {
   const { t } = useTranslation();
 
-  function handleClick() {
-    if (disabled) return;
-    if (isSessionActive) {
-      onFinish();
-      return;
-    }
-
-    onStart();
-  }
-
   return (
     <button
-      onClick={handleClick}
+      onClick={() => !disabled && (isSessionActive ? onFinish() : onStart())}
       disabled={disabled}
       className={cn(
-        "relative flex flex-16 h-[clamp(4rem,6vh,9rem)] items-center rounded-full cursor-pointer overflow-hidden",
-        isSessionActive ? "justify-end" : "justify-start"
+        "relative flex h-[clamp(4rem,6vh,9rem)] w-full items-center rounded-full cursor-pointer overflow-hidden transition-colors duration-500 p-1",
+        isSessionActive ? `justify-end ${modeStyles[currentMode].bgPrimary}` : "justify-start bg-white",
+        className,
       )}
     >
       <MotionFade
         visible={!isSessionActive}
-        className="absolute inset-0 z-0 bg-white"
-      />
-
-      <div className="absolute right-7 flex h-full items-center pointer-events-none z-10">
-        <MotionFade visible={!isSessionActive} className="text-primary text-2xl">
-          {t("Start")}
-        </MotionFade>
-      </div>
+        className="absolute right-7 flex h-full items-center text-[clamp(1.4rem,4vmin,1.5rem)] z-10"
+      >
+        {t("Start")}
+      </MotionFade>
 
       <MotionFade
         visible={isSessionActive}
-        className={cn(
-          "absolute inset-0 z-0 transition-colors duration-500",
-          modeStyles[currentMode].bgPrimary
-        )}
-      />
-
-      <div className="absolute left-7 flex h-full items-center pointer-events-none z-10">
-        <MotionFade
-          visible={isSessionActive}
-          duration={0.5}
-          className="text-white text-2xl"
-        >
-          {t("Finish")}
-        </MotionFade>
-      </div>
+        duration={0.5}
+        className="absolute left-7 flex h-full items-center text-[clamp(1.4rem,4vmin,1.5rem)] text-white z-10"
+      >
+        {t("Finish")}
+      </MotionFade>
 
       <motion.div
         layout
         transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="relative z-20 flex h-16 w-16 shrink-0 items-center justify-center rounded-full overflow-hidden"
+        className={cn(
+          "flex h-full aspect-square items-center justify-center rounded-full z-20 transition-colors duration-500",
+          isSessionActive ? "bg-white" : modeStyles[currentMode].bgPrimary
+        )}
       >
-        <MotionFade
-          visible={!isSessionActive}
-          className={cn(
-            "absolute inset-0 transition-colors duration-500",
-            modeStyles[currentMode].bgPrimary
-          )}
-        />
-
-        <MotionFade
-          visible={isSessionActive}
-          className="absolute inset-0 bg-white"
-        />
-
         <motion.div
           animate={{ rotate: isSessionActive ? 180 : 0 }}
           transition={{ duration: 0.25, ease: "easeInOut" }}
-          className="relative z-10"
         >
           <ArrowRight
             className={cn(
-              "h-9 w-9 transition-colors duration-500",
+              "h-8 w-8 md:h-9 md:w-9 transition-colors duration-500",
               isSessionActive ? `text-[var(--color-${currentMode})]` : "text-white"
             )}
             strokeWidth={2.5}

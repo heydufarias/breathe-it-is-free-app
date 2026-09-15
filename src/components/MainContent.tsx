@@ -172,6 +172,7 @@ export function MainContent() {
 
         <div className="flex w-full items-end gap-2">
           <MainButton
+            className="flex-[1.8]"
             currentMode={currentMode}
             onStart={startSession}
             onFinish={finishSession}
@@ -180,6 +181,7 @@ export function MainContent() {
           />
 
           <CycleSelector
+            className="flex-[1.2]"
             currentMode={currentMode}
             cycles={cycles}
             onDecrease={decreaseCycles}
