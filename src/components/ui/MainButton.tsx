@@ -30,14 +30,17 @@ export function MainButton({
       onClick={() => !disabled && (isSessionActive ? onFinish() : onStart())}
       disabled={disabled}
       className={cn(
-        "relative flex h-[clamp(4rem,6vh,9rem)] w-full items-center rounded-full cursor-pointer overflow-hidden transition-colors duration-500 p-1",
+        "relative flex h-[clamp(4rem,6vh,9rem)] w-full items-center rounded-full cursor-pointer overflow-hidden transition-colors duration-500 p-1 [-webkit-text-fill-color:currentColor]",
         isSessionActive ? `justify-end ${modeStyles[currentMode].bgPrimary}` : "justify-start bg-white",
         className,
       )}
     >
       <MotionFade
         visible={!isSessionActive}
-        className="absolute right-7 flex h-full items-center text-[clamp(1.4rem,4vmin,1.5rem)] z-10 transition-colors duration-500"
+        className={cn(
+          "absolute right-7 flex h-full items-center text-[clamp(1.4rem,4vmin,1.5rem)] z-10 transition-colors duration-500",
+          modeStyles[currentMode].text
+        )}
       >
         {t("Start")}
       </MotionFade>
