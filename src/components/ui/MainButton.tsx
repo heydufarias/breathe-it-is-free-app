@@ -37,7 +37,7 @@ export function MainButton({
     >
       <MotionFade
         visible={!isSessionActive}
-        className="absolute right-7 flex h-full items-center text-[clamp(1.4rem,4vmin,1.5rem)] z-10"
+        className="absolute right-7 flex h-full items-center text-[clamp(1.4rem,4vmin,1.5rem)] z-10 transition-colors duration-500"
       >
         {t("Start")}
       </MotionFade>
