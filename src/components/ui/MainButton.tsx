@@ -30,7 +30,9 @@ export function MainButton({
       onClick={() => !disabled && (isSessionActive ? onFinish() : onStart())}
       disabled={disabled}
       className={cn(
-        "relative flex h-[clamp(4rem,6vh,9rem)] w-full items-center rounded-full cursor-pointer overflow-hidden transition-colors duration-500 p-1 [-webkit-text-fill-color:currentColor]",
+        "relative flex h-15 w-full items-center overflow-hidden p-1",
+        "rounded-full",
+        "cursor-pointer transition-colors duration-500",
         isSessionActive ? `justify-end ${modeStyles[currentMode].bgPrimary}` : "justify-start bg-white",
         className,
       )}
@@ -38,7 +40,9 @@ export function MainButton({
       <MotionFade
         visible={!isSessionActive}
         className={cn(
-          "absolute right-7 flex h-full items-center text-[clamp(1.4rem,4vmin,1.5rem)] z-10 transition-colors duration-500",
+          "absolute right-5 md:right-7 flex h-full items-center z-10",
+          "text-[22px] md:text-2xl",
+          "transition-colors duration-500",
           modeStyles[currentMode].text
         )}
       >
@@ -48,7 +52,11 @@ export function MainButton({
       <MotionFade
         visible={isSessionActive}
         duration={0.5}
-        className="absolute left-7 flex h-full items-center text-[clamp(1.4rem,4vmin,1.5rem)] text-white z-10"
+        className={cn(
+          "absolute left-5 md:left-7 flex h-full items-center z-10",
+          "text-[22px] md:text-2xl text-white",
+          "transition-colors duration-500",
+        )}
       >
         {t("Finish")}
       </MotionFade>
@@ -57,7 +65,9 @@ export function MainButton({
         layout
         transition={{ duration: 0.5, ease: "easeInOut" }}
         className={cn(
-          "flex h-full aspect-square items-center justify-center rounded-full z-20 transition-colors duration-500",
+          "flex h-full items-center justify-center z-20",
+          "rounded-full aspect-square",
+          "transition-colors duration-500",
           isSessionActive ? "bg-white" : modeStyles[currentMode].bgPrimary
         )}
       >
@@ -67,7 +77,8 @@ export function MainButton({
         >
           <ArrowRight
             className={cn(
-              "h-8 w-8 md:h-9 md:w-9 transition-colors duration-500",
+              "h-8 w-8 md:h-9 md:w-9",
+              "transition-colors duration-500",
               isSessionActive ? `text-[var(--color-${currentMode})]` : "text-white"
             )}
             strokeWidth={2.5}
