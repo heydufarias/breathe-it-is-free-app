@@ -31,20 +31,30 @@ export function CycleSelector({
   const canIncrease = cycles < 9;
 
   return (
-    <div className={cn("flex flex-col w-full items-start", className)}>
-      <div className="pl-6 text-[clamp(1.2rem,3vmin,1.25rem)] pb-0.5 leading-6">
+    <div className={cn(
+      "flex flex-col w-full items-start",
+      className,
+    )}>
+      <div className={cn(
+        "pl-6",
+        "text-lg/snug md:text-xl/tight pb-[0.8px]",
+      )}>
         {t("Cycles")}
       </div>
 
       <div
         className={cn(
-          "relative flex h-[clamp(4rem,6vh,9rem)] w-full items-center justify-center rounded-full overflow-hidden transition-colors duration-500",
+          "relative flex h-15 w-full items-center justify-center overflow-hidden",
+          "rounded-full transition-colors duration-500",
           isSessionActive ? "bg-white" : modeStyles[currentMode].bgPrimary
         )}
       >
         <MotionFade
           visible={!isSessionActive}
-          className="absolute inset-0 flex w-full items-center text-[clamp(2rem,5vmin,2.2rem)] z-10"
+          className={cn(
+            "absolute inset-0 flex w-full items-center z-10",
+            "text-[32px] md:text-4xl text-white",
+          )}
         >
           <motion.button
             onClick={onDecrease}
@@ -52,7 +62,8 @@ export function CycleSelector({
             whileTap={canDecrease ? { scale: 0.8 } : undefined}
             transition={{ duration: 0.15, ease: "easeInOut" }}
             className={cn(
-              "flex flex-1 h-full items-center justify-center rounded-full will-change-transform",
+              "flex flex-1 h-full items-center justify-center",
+              "rounded-full will-change-transform",
               canDecrease ? "cursor-pointer" : "cursor-default"
             )}
           >
@@ -82,7 +93,8 @@ export function CycleSelector({
             whileTap={canIncrease ? { scale: 0.8 } : undefined}
             transition={{ duration: 0.15, ease: "easeInOut" }}
             className={cn(
-              "flex flex-1 h-full items-center justify-center rounded-full will-change-transform",
+              "flex flex-1 h-full items-center justify-center",
+              "rounded-full will-change-transform",
               canIncrease ? "cursor-pointer" : "cursor-default"
             )}
           >
@@ -99,7 +111,8 @@ export function CycleSelector({
         <MotionFade
           visible={isSessionActive}
           className={cn(
-            "absolute inset-0 flex w-full items-center justify-center text-[clamp(2rem,5vmin,2.2rem)] z-10",
+            "absolute inset-0 flex w-full items-center justify-center z-10",
+            "text-[32px] md:text-4xl text-white",
             `text-[var(--color-${currentMode})]`
           )}
         >
