@@ -133,14 +133,14 @@ export function MainContent() {
 
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <div className="flex flex-col h-full w-full max-w-120">
+      <div className="flex flex-col h-full w-full max-w-120 mx-2">
         <div className="relative w-full h-26">
           <MotionFade
             visible={!isSessionActive}
             duration={0.5}
-            className="absolute inset-0 flex flex-col items-center justify-center gap-1 text-center"
+            className="absolute inset-0 flex flex-col items-center justify-center text-center gap-0.5"
           >
-            <div className="text-[clamp(1.25rem,5vw,1.875rem)] leading-tight font-semibold">
+            <div className="text-[27px] md:text-3xl tracking-tight leading-none font-semibold pb-0.5">
               {t("session.title")}
             </div>
             <ModeSelector currentMode={currentMode} onModeChange={setMode} />
