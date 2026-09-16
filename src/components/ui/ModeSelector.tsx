@@ -17,13 +17,17 @@ export function ModeSelector({
   return (
     <div
       className={cn(
-        "relative flex w-full rounded-full overflow-hidden transition-colors duration-500",
+        "relative flex w-full overflow-hidden",
+        "rounded-full",
+        "transition-colors duration-500",
         modeStyles[currentMode].bgPrimary
       )}
     >
       <div
         className={cn(
-          "absolute top-1 bottom-1 left-1 bg-white rounded-full transition-all duration-500 ease-in-out",
+          "absolute top-1 bottom-1 left-1",
+          "bg-white rounded-full ",
+          "transition-all duration-500 ease-in-out",
           modeStyles[currentMode].translate
         )}
         style={{ width: "calc((100% - 0.5rem) / 3)" }}
@@ -34,8 +38,9 @@ export function ModeSelector({
           key={mode}
           onClick={() => onModeChange(mode)}
           className={cn(
-            "flex flex-1 h-[clamp(4rem,6vh,9rem)] items-center justify-center",
-            "text-[clamp(1.4rem,4vmin,1.5rem)] z-10 cursor-pointer transition-colors duration-500",
+            "flex flex-1 h-15 items-center justify-center z-10",
+            "text-[22px] md:text-2xl",
+            "cursor-pointer transition-colors duration-500",
             currentMode === mode ? modeStyles[currentMode].text : "text-white/60"
           )}
         >
