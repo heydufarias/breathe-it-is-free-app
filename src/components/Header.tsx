@@ -11,10 +11,10 @@ export function Header({ showInfoButton, onInfoButtonClick }: HeaderProps) {
   const { t } = useTranslation();
 
   return (
-    <header className="flex items-center justify-between px-4 md:px-6 py-2">
+    <header className="flex items-center justify-between px-4 sm:px-6 py-2">
       <div className={cn(
         "flex flex-col",
-        "text-[29px] md:text-[34px] font-semibold tracking-tight leading-none"
+        "text-[29px] sm:text-[34px] font-semibold tracking-tight leading-none"
       )}>
         <span>Breathe,</span>
         <span className="-mt-1.5">it is free.</span>
@@ -23,7 +23,7 @@ export function Header({ showInfoButton, onInfoButtonClick }: HeaderProps) {
         <button
           onClick={onInfoButtonClick}
           className={cn(
-            "text-[23px] md:text-[25px] font-semibold",
+            "text-[23px] sm:text-[25px] font-semibold",
             "cursor-pointer"
           )}>
           {t("info.howToUse.title")}

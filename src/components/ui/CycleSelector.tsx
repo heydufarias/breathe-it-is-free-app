@@ -37,7 +37,7 @@ export function CycleSelector({
     )}>
       <div className={cn(
         "pl-6",
-        "text-lg/snug md:text-xl/tight pb-[0.8px]",
+        "text-lg/snug sm:text-xl/tight pb-[0.8px]",
       )}>
         {t("Cycles")}
       </div>
@@ -53,7 +53,7 @@ export function CycleSelector({
           visible={!isSessionActive}
           className={cn(
             "absolute inset-0 flex w-full items-center z-10",
-            "text-[32px] md:text-4xl text-white",
+            "text-[32px] sm:text-4xl text-white",
           )}
         >
           <motion.button
@@ -69,7 +69,7 @@ export function CycleSelector({
           >
             <ChevronLeft
               className={cn(
-                "h-8 w-8 md:h-9 md:w-9 transition-colors",
+                "h-8 w-8 sm:h-9 sm:w-9 transition-colors",
                 canDecrease ? "text-white" : "text-white/60"
               )}
               strokeWidth={2.5}
@@ -100,7 +100,7 @@ export function CycleSelector({
           >
             <ChevronRight
               className={cn(
-                "h-8 w-8 md:h-9 md:w-9 transition-colors",
+                "h-8 w-8 sm:h-9 sm:w-9 transition-colors",
                 canIncrease ? "text-white" : "text-white/60"
               )}
               strokeWidth={2.5}
@@ -112,7 +112,7 @@ export function CycleSelector({
           visible={isSessionActive}
           className={cn(
             "absolute inset-0 flex w-full items-center justify-center z-10",
-            "text-[32px] md:text-4xl text-white",
+            "text-[32px] sm:text-4xl text-white",
             `text-[var(--color-${currentMode})]`
           )}
         >

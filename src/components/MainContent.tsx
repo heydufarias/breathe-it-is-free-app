@@ -140,7 +140,7 @@ export function MainContent() {
             duration={0.5}
             className="absolute inset-0 flex flex-col items-center justify-center text-center gap-0.5"
           >
-            <div className="text-[27px] md:text-3xl tracking-tight leading-none font-semibold pb-0.5">
+            <div className="text-[27px] sm:text-3xl tracking-tight leading-none font-semibold pb-0.5">
               {t("session.title")}
             </div>
             <ModeSelector currentMode={currentMode} onModeChange={setMode} />

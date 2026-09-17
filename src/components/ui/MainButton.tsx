@@ -40,8 +40,8 @@ export function MainButton({
       <MotionFade
         visible={!isSessionActive}
         className={cn(
-          "absolute right-5 md:right-7 flex h-full items-center z-10",
-          "text-[22px] md:text-2xl",
+          "absolute right-5 sm:right-7 flex h-full items-center z-10",
+          "text-[22px] sm:text-2xl",
           "transition-colors duration-500",
           modeStyles[currentMode].text
         )}
@@ -53,8 +53,8 @@ export function MainButton({
         visible={isSessionActive}
         duration={0.5}
         className={cn(
-          "absolute left-5 md:left-7 flex h-full items-center z-10",
-          "text-[22px] md:text-2xl text-white",
+          "absolute left-5 sm:left-7 flex h-full items-center z-10",
+          "text-[22px] sm:text-2xl text-white",
           "transition-colors duration-500",
         )}
       >
@@ -77,7 +77,7 @@ export function MainButton({
         >
           <ArrowRight
             className={cn(
-              "h-8 w-8 md:h-9 md:w-9",
+              "h-8 w-8 sm:h-9 sm:w-9",
               "transition-colors duration-500",
               isSessionActive ? `text-[var(--color-${currentMode})]` : "text-white"
             )}
