@@ -36,8 +36,8 @@ export function CycleSelector({
       className,
     )}>
       <div className={cn(
-        "pl-6",
-        "text-lg/snug sm:text-xl/tight pb-[0.8px]",
+        "pl-6 pb-[0.8px]",
+        "text-lg/snug sm:text-xl/tight",
       )}>
         {t("Cycles")}
       </div>

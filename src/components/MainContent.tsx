@@ -132,15 +132,15 @@ export function MainContent() {
   }
 
   return (
-    <div className="flex h-full w-full items-center justify-center">
-      <div className="flex flex-col h-full w-full max-w-120 mx-2">
-        <div className="relative w-full h-26">
+    <div className="flex h-full w-full items-center justify-center px-3">
+      <div className="flex flex-col h-full w-full max-w-120">
+        <div className="relative w-full h-29">
           <MotionFade
             visible={!isSessionActive}
             duration={0.5}
-            className="absolute inset-0 flex flex-col items-center justify-center text-center gap-0.5"
+            className="absolute inset-0 flex flex-col items-center justify-center text-center gap-1.5"
           >
-            <div className="text-[27px] sm:text-3xl tracking-tight leading-none font-semibold pb-0.5">
+            <div className="text-[23px] sm:text-3xl tracking-tight leading-none font-semibold">
               {t("session.title")}
             </div>
             <ModeSelector currentMode={currentMode} onModeChange={setMode} />
@@ -148,15 +148,16 @@ export function MainContent() {
 
           <MotionFade
             visible={sessionStage === "prepare"}
-            duration={sessionStage === "prepare" ? 1.5 : 0.2}
-            className="absolute inset-0 flex flex-col items-center justify-center text-center text-[clamp(2rem,5vw,3rem)] leading-6"
+            duration={sessionStage === "prepare" ? 1.5 : sessionStage === "active" ? 1.5 : 0.2}
+            className={cn("absolute inset-0 flex flex-col items-center justify-center",
+              "text-[30px]/[25px] sm:text-[38px]/[30px] text-center tracking-tight font-semibold"
+            )}
           >
             {t("session.prepare")}
           </MotionFade>
         </div>
 
         <div className="relative flex flex-1 w-full">
-
           <div className="absolute inset-0 pointer-events-none">
             <Canvas camera={{ position: [0, 0, 22], fov: 30 }}>
               <ambientLight intensity={1.5} />
@@ -181,7 +182,7 @@ export function MainContent() {
           />
 
           <CycleSelector
-            className="flex-[1.2]"
+            className="flex-[1.2] xs:flex-1"
             currentMode={currentMode}
             cycles={cycles}
             onDecrease={decreaseCycles}
