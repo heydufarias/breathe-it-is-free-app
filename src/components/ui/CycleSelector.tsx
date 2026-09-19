@@ -32,19 +32,19 @@ export function CycleSelector({
 
   return (
     <div className={cn(
-      "flex flex-col w-full items-start",
+      "relative flex flex-col w-full items-start",
       className,
     )}>
       <div className={cn(
-        "pl-6 pb-[0.8px]",
-        "text-lg/snug sm:text-xl/tight",
+        "absolute top-[-25px] pl-4",
+        "text-[17px]/snug sm:text-[19px]/tight",
       )}>
         {t("Cycles")}
       </div>
 
       <div
         className={cn(
-          "relative flex h-15 w-full items-center justify-center overflow-hidden",
+          "relative flex h-12 w-30 items-center justify-center overflow-hidden",
           "rounded-full transition-colors duration-500",
           isSessionActive ? "bg-white" : modeStyles[currentMode].bgPrimary
         )}
@@ -53,7 +53,7 @@ export function CycleSelector({
           visible={!isSessionActive}
           className={cn(
             "absolute inset-0 flex w-full items-center z-10",
-            "text-[32px] sm:text-4xl text-white",
+            "text-[32px] sm:text-[33px] text-white",
           )}
         >
           <motion.button
@@ -112,7 +112,7 @@ export function CycleSelector({
           visible={isSessionActive}
           className={cn(
             "absolute inset-0 flex w-full items-center justify-center z-10",
-            "text-[32px] sm:text-4xl text-white",
+            "text-[32px] sm:text-[33px] text-white",
             `text-[var(--color-${currentMode})]`
           )}
         >

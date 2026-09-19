@@ -30,7 +30,7 @@ export function MainButton({
       onClick={() => !disabled && (isSessionActive ? onFinish() : onStart())}
       disabled={disabled}
       className={cn(
-        "relative flex h-15 w-full items-center overflow-hidden p-1",
+        "relative flex h-15 w-50 items-center overflow-hidden p-1",
         "rounded-full",
         "cursor-pointer transition-colors duration-500",
         isSessionActive ? `justify-end ${modeStyles[currentMode].bgPrimary}` : "justify-start bg-white",

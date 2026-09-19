@@ -140,7 +140,7 @@ export function MainContent() {
             duration={0.5}
             className="absolute inset-0 flex flex-col items-center justify-center text-center gap-1.5"
           >
-            <div className="text-[23px] sm:text-3xl tracking-tight leading-none font-semibold">
+            <div className="text-[27px] sm:text-3xl tracking-tight leading-none font-semibold">
               {t("session.title")}
             </div>
             <ModeSelector currentMode={currentMode} onModeChange={setMode} />
@@ -150,7 +150,7 @@ export function MainContent() {
             visible={sessionStage === "prepare"}
             duration={sessionStage === "prepare" ? 1.5 : sessionStage === "active" ? 1.5 : 0.2}
             className={cn("absolute inset-0 flex flex-col items-center justify-center",
-              "text-[30px]/[25px] sm:text-[38px]/[30px] text-center tracking-tight font-semibold"
+              "text-[40px]/[36px] sm:text-[50px]/[40px] text-center tracking-tight font-semibold"
             )}
           >
             {t("session.prepare")}
@@ -171,9 +171,9 @@ export function MainContent() {
           </AnimatePresence>
         </div>
 
-        <div className="flex w-full items-end gap-2">
+        <div className="flex w-full items-center gap-5">
           <MainButton
-            className="flex-[1.8]"
+            className="flex-[1]"
             currentMode={currentMode}
             onStart={startSession}
             onFinish={finishSession}

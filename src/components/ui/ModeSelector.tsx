@@ -38,7 +38,7 @@ export function ModeSelector({
           key={mode}
           onClick={() => onModeChange(mode)}
           className={cn(
-            "flex flex-1 h-15 items-center justify-center z-10",
+            "flex flex-1 h-13 items-center justify-center z-10",
             "text-[22px] sm:text-2xl",
             "cursor-pointer transition-colors duration-500",
             currentMode === mode ? modeStyles[currentMode].text : "text-white/60"
