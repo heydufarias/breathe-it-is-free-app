@@ -44,7 +44,7 @@ export function CycleSelector({
 
       <div
         className={cn(
-          "relative flex h-12 w-30 items-center justify-center overflow-hidden",
+          "relative flex h-10 sm:h-12  w-26 sm:w-30 items-center justify-center overflow-hidden",
           "rounded-full transition-colors duration-500",
           isSessionActive ? "bg-white" : modeStyles[currentMode].bgPrimary
         )}
@@ -53,7 +53,7 @@ export function CycleSelector({
           visible={!isSessionActive}
           className={cn(
             "absolute inset-0 flex w-full items-center z-10",
-            "text-[32px] sm:text-[33px] text-white",
+            "text-[28px] sm:text-[33px] text-white",
           )}
         >
           <motion.button
@@ -69,7 +69,7 @@ export function CycleSelector({
           >
             <ChevronLeft
               className={cn(
-                "h-8 w-8 sm:h-9 sm:w-9 transition-colors",
+                "h-6 w-6 sm:h-9 sm:w-9 transition-colors",
                 canDecrease ? "text-white" : "text-white/60"
               )}
               strokeWidth={2.5}
@@ -100,7 +100,7 @@ export function CycleSelector({
           >
             <ChevronRight
               className={cn(
-                "h-8 w-8 sm:h-9 sm:w-9 transition-colors",
+                "h-6 w-6 sm:h-9 sm:w-9 transition-colors",
                 canIncrease ? "text-white" : "text-white/60"
               )}
               strokeWidth={2.5}

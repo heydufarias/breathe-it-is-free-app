@@ -30,7 +30,7 @@ export function MainButton({
       onClick={() => !disabled && (isSessionActive ? onFinish() : onStart())}
       disabled={disabled}
       className={cn(
-        "relative flex h-15 w-50 items-center overflow-hidden p-1",
+        "relative flex h-12 sm:h-15 w-full sm:w-50 items-center overflow-hidden p-1",
         "rounded-full",
         "cursor-pointer transition-colors duration-500",
         isSessionActive ? `justify-end ${modeStyles[currentMode].bgPrimary}` : "justify-start bg-white",
@@ -41,7 +41,7 @@ export function MainButton({
         visible={!isSessionActive}
         className={cn(
           "absolute right-5 sm:right-7 flex h-full items-center z-10",
-          "text-[22px] sm:text-2xl",
+          "text-[19px] sm:text-2xl",
           "transition-colors duration-500",
           modeStyles[currentMode].text
         )}
@@ -54,7 +54,7 @@ export function MainButton({
         duration={0.5}
         className={cn(
           "absolute left-5 sm:left-7 flex h-full items-center z-10",
-          "text-[22px] sm:text-2xl text-white",
+          "text-[18px] sm:text-2xl text-white",
           "transition-colors duration-500",
         )}
       >
@@ -77,7 +77,7 @@ export function MainButton({
         >
           <ArrowRight
             className={cn(
-              "h-8 w-8 sm:h-9 sm:w-9",
+              "h-6 sm:h-9 sm:w-9",
               "transition-colors duration-500",
               isSessionActive ? `text-[var(--color-${currentMode})]` : "text-white"
             )}

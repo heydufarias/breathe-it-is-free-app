@@ -140,7 +140,7 @@ export function MainContent() {
             duration={0.5}
             className="absolute inset-0 flex flex-col items-center justify-center text-center gap-1.5"
           >
-            <div className="text-[27px] sm:text-3xl tracking-tight leading-none font-semibold">
+            <div className="text-[22px] sm:text-3xl tracking-tight leading-none">
               {t("session.title")}
             </div>
             <ModeSelector currentMode={currentMode} onModeChange={setMode} />
@@ -150,7 +150,7 @@ export function MainContent() {
             visible={sessionStage === "prepare"}
             duration={sessionStage === "prepare" ? 1.5 : sessionStage === "active" ? 1.5 : 0.2}
             className={cn("absolute inset-0 flex flex-col items-center justify-center",
-              "text-[40px]/[36px] sm:text-[50px]/[40px] text-center tracking-tight font-semibold"
+              "text-[28px]/[24px] sm:text-[50px]/[40px] text-center tracking-tight"
             )}
           >
             {t("session.prepare")}
@@ -173,7 +173,7 @@ export function MainContent() {
 
         <div className="flex w-full items-center gap-5">
           <MainButton
-            className="flex-[1]"
+            // className="flex-[1]"
             currentMode={currentMode}
             onStart={startSession}
             onFinish={finishSession}
@@ -182,7 +182,7 @@ export function MainContent() {
           />
 
           <CycleSelector
-            className="flex-[1.2] xs:flex-1"
+            // className="flex-[1.2] xs:flex-1"
             currentMode={currentMode}
             cycles={cycles}
             onDecrease={decreaseCycles}

@@ -31,13 +31,13 @@ export function Info({ onClose }: InfoProps) {
           <X className="h-9 w-9" strokeWidth={2.5} />
         </button>
 
-        <section>
-          <p className="mb-2 text-xl font-bold tracking-tight">{t("info.howToUse.title")}</p>
-          <p className="text-lg font-semibold">{t("info.howToUse.text")}</p>
-        </section>
+        {/* <section>
+          <p className="mb-2 text-[18px] sm:text-xl tracking-tight">{t("info.howToUse.title")}</p>
+          <p className="text-[16px] sm:text-xl font-normal">{t("info.howToUse.text")}</p>
+        </section> */}
 
         <section>
-          <p className="mb-4 text-xl font-bold tracking-tight">{t("info.modesSection.title")}</p>
+          <p className="mb-4 text-[18px] sm:text-xl tracking-tight">{t("info.modesSection.title")}</p>
           <div className="flex flex-col gap-5">
             {MODES.map((mode) => (
               <div key={mode}>
@@ -54,7 +54,7 @@ export function Info({ onClose }: InfoProps) {
                     {t(`info.modesSection.${mode}.pattern`)}
                   </span>
                 </div>
-                <p className="mt-1 text-lg font-semibold">
+                <p className="mt-1 text-[16px] sm:text-xl">
                   {t(`info.modesSection.${mode}.description`)}
                 </p>
               </div>

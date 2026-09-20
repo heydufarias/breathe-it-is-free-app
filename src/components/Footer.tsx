@@ -9,7 +9,7 @@ export function Footer() {
 
   return (
     <footer className={cn("flex items-center justify-between px-4 sm:px-6 py-5",
-      "text-[23px] sm:text-[25px] font-semibold tracking-tight leading-none"
+      "text-[20px] sm:text-[25px] font-semibold tracking-tight leading-none"
     )}>
       <div className="flex gap-3">
         {(["en", "pt-BR"] as Language[]).map((language) => {
