@@ -14,7 +14,7 @@ export function Header({ showInfoButton, onInfoButtonClick }: HeaderProps) {
     <header className="flex items-center justify-between px-4 sm:px-6 py-2">
       <div className={cn(
         "flex flex-col",
-        "text-[25px] sm:text-[34px] font-semibold tracking-tight leading-none"
+        "text-[26px] sm:text-[34px] font-semibold tracking-tight leading-none"
       )}>
         <span>Breathe,</span>
         <span className="-mt-1.5">it is free.</span>

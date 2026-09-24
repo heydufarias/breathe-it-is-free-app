@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { modeStyles } from "../../lib/consts";
 import type { BreathMode } from "../../lib/types";
@@ -30,29 +30,40 @@ export function CycleSelector({
   const canDecrease = cycles > 3;
   const canIncrease = cycles < 9;
 
+  const disabledIconColor = `color-mix(in srgb, white 60%, var(--color-${currentMode}))`;
+
   return (
-    <div className={cn(
-      "relative flex flex-col w-full items-start",
-      className,
-    )}>
-      <div className={cn(
-        "absolute top-[-25px] pl-4",
-        "text-[17px]/snug sm:text-[19px]/tight",
-      )}>
+    <div className={cn("relative flex flex-col w-full items-start", className)}>
+      <div
+        className={cn(
+          "absolute top-[-25px] pl-4",
+          "text-[17px]/snug sm:text-[19px]/tight",
+        )}
+      >
         {t("Cycles")}
       </div>
 
-      <div
-        className={cn(
-          "relative flex h-10 sm:h-12  w-26 sm:w-30 items-center justify-center overflow-hidden",
-          "rounded-full transition-colors duration-500",
-          isSessionActive ? "bg-white" : modeStyles[currentMode].bgPrimary
-        )}
-      >
+      <div className="relative flex h-11 sm:h-12 w-28 sm:w-32 items-center justify-center overflow-hidden rounded-full">
+        {/* Fundo: cor do modo (sessão parada) */}
         <MotionFade
           visible={!isSessionActive}
           className={cn(
-            "absolute inset-0 flex w-full items-center z-10",
+            "absolute inset-0 z-0 transition-colors duration-500",
+            modeStyles[currentMode].bgPrimary,
+          )}
+        />
+
+        {/* Fundo: branco (sessão ativa) */}
+        <MotionFade
+          visible={isSessionActive}
+          className="absolute inset-0 z-0 bg-white"
+        />
+
+        {/* Conteúdo: seletor */}
+        <MotionFade
+          visible={!isSessionActive}
+          className={cn(
+            "absolute inset-0 flex w-full items-center p-1 z-10",
             "text-[28px] sm:text-[33px] text-white",
           )}
         >
@@ -62,17 +73,15 @@ export function CycleSelector({
             whileTap={canDecrease ? { scale: 0.8 } : undefined}
             transition={{ duration: 0.15, ease: "easeInOut" }}
             className={cn(
-              "flex flex-1 h-full items-center justify-center",
-              "rounded-full will-change-transform",
-              canDecrease ? "cursor-pointer" : "cursor-default"
+              "flex h-full aspect-square shrink-0 items-center justify-center",
+              "rounded-full bg-white/25 will-change-transform",
+              canDecrease ? "cursor-pointer" : "cursor-default",
             )}
           >
-            <ChevronLeft
-              className={cn(
-                "h-6 w-6 sm:h-9 sm:w-9 transition-colors",
-                canDecrease ? "text-white" : "text-white/60"
-              )}
-              strokeWidth={2.5}
+            <Minus
+              className="h-5 w-5 sm:h-6 sm:w-6 transition-colors"
+              style={{ color: canDecrease ? "white" : disabledIconColor }}
+              strokeWidth={3.5}
             />
           </motion.button>
 
@@ -93,27 +102,26 @@ export function CycleSelector({
             whileTap={canIncrease ? { scale: 0.8 } : undefined}
             transition={{ duration: 0.15, ease: "easeInOut" }}
             className={cn(
-              "flex flex-1 h-full items-center justify-center",
-              "rounded-full will-change-transform",
-              canIncrease ? "cursor-pointer" : "cursor-default"
+              "flex h-full aspect-square shrink-0 items-center justify-center",
+              "rounded-full bg-white/25 will-change-transform",
+              canIncrease ? "cursor-pointer" : "cursor-default",
             )}
           >
-            <ChevronRight
-              className={cn(
-                "h-6 w-6 sm:h-9 sm:w-9 transition-colors",
-                canIncrease ? "text-white" : "text-white/60"
-              )}
-              strokeWidth={2.5}
+            <Plus
+              className="h-5 w-5 sm:h-6 sm:w-6 transition-colors"
+              style={{ color: canIncrease ? "white" : disabledIconColor }}
+              strokeWidth={3.5}
             />
           </motion.button>
         </MotionFade>
 
+        {/* Conteúdo: contador da sessão */}
         <MotionFade
           visible={isSessionActive}
           className={cn(
             "absolute inset-0 flex w-full items-center justify-center z-10",
-            "text-[32px] sm:text-[33px] text-white",
-            `text-[var(--color-${currentMode})]`
+            "text-[32px] sm:text-[33px]",
+            `text-[var(--color-${currentMode})]`,
           )}
         >
           <span className="flex items-baseline">
