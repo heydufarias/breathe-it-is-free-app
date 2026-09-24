@@ -1,15 +1,13 @@
 {
   "about": "About",
-  "by": "By",
-  "Select mode": "Select mode",
   "modes": {
     "relax": "Relax",
     "focus": "Focus",
     "sleep": "Sleep"
   },
-  "Start": "Start",
-  "Finish": "Finish",
-  "Cycles": "Cycles",
+  "start": "Start",
+  "finish": "Finish",
+  "cycles": "Cycles",
   "info": {
     "howToUse": {
       "title": "How to use",

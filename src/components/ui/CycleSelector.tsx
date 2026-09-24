@@ -40,7 +40,7 @@ export function CycleSelector({
           "text-[17px]/snug sm:text-[19px]/tight",
         )}
       >
-        {t("Cycles")}
+        {t("cycles")}
       </div>
 
       <div className="relative flex h-11 sm:h-12 w-28 sm:w-32 items-center justify-center overflow-hidden rounded-full">

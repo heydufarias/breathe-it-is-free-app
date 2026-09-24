@@ -55,7 +55,7 @@ export function MainButton({
           visible={!isSessionActive}
           className="text-[length:clamp(1.4rem,4vmin,1.5rem)]"
         >
-          {t("Start")}
+          {t("start")}
         </MotionFade>
       </div>
 
@@ -73,7 +73,7 @@ export function MainButton({
           duration={0.5}
           className="text-white text-[length:clamp(1.4rem,4vmin,1.5rem)]"
         >
-          {t("Finish")}
+          {t("finish")}
         </MotionFade>
       </div>
 

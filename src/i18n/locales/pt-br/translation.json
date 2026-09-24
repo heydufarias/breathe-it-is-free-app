@@ -1,15 +1,13 @@
 {
   "about": "Sobre",
-  "by": "Por",
-  "Select mode": "Selecione o modo",
   "modes": {
     "relax": "Relaxar",
     "focus": "Focar",
     "sleep": "Dormir"
   },
-  "Start": "Começar",
-  "Finish": "Finalizar",
-  "Cycles": "Ciclos",
+  "start": "Começar",
+  "finish": "Finalizar",
+  "cycles": "Ciclos",
   "info": {
     "howToUse": {
       "title": "Como usar",
@@ -37,9 +35,9 @@
     "title": "O que você precisa agora?",
     "prepare": "Solte o ar o máximo que conseguir.",
     "phases": {
-      "inhale": "Puxe o ar",
+      "inhale": "Inspire",
       "hold": "Segure",
-      "exhale": "Solte o ar"
+      "exhale": "Expire"
     },
     "done": {
       "relax": "Mente relaxada",
