@@ -25,7 +25,9 @@ export default function App() {
   return (
     <div
       className={cn(
-        "relative flex flex-col h-dvh w-full font-helvetica transition-colors duration-500",
+        "relative flex flex-col h-dvh w-full",
+        "font-helvetica font-semibold",
+        "transition-colors duration-500",
         modeStyles[currentMode].bgSurface,
         modeStyles[currentMode].text
       )}
