@@ -8,8 +8,9 @@ export function Footer() {
   const current = i18n.language;
 
   return (
-    <footer className={cn("flex items-center justify-between px-4 sm:px-6 py-5",
-      "text-[20px] sm:text-[25px] font-semibold tracking-tight leading-none"
+    <footer className={cn(
+      "flex items-center justify-between px-4 sm:px-6 py-5",
+      "text-[20px] sm:text-[25px] tracking-tight leading-none"
     )}>
       <div className="flex gap-3">
         {(["en", "pt-BR"] as Language[]).map((language) => {
@@ -25,7 +26,10 @@ export function Footer() {
                 <motion.div
                   layoutId="active-underline"
 
-                  className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-current"
+                  className={cn(
+                    "absolute -bottom-0.5 left-0 right-0 h-0.5",
+                    "bg-current"
+                  )}
                   transition={{
                     type: "spring",
                     stiffness: 380,
@@ -39,7 +43,7 @@ export function Footer() {
       </div>
 
       <span>
-        ©2026
+        &copy;{new Date().getFullYear()}
       </span>
     </footer >
   );
