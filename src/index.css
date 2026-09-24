@@ -13,7 +13,6 @@ html {
 }
 
 @theme {
-  --breakpoint-xs: 30rem;
   --font-helvetica: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   --color-relax: #89d9ab;
@@ -23,7 +22,7 @@ html {
 
 @font-face {
   font-family: "Helvetica Neue";
-  src: url("./assets/fonts/helvetica-neue/HelveticaNeue-Roman.otf")
+  src: url("./assets/fonts/helvetica-neue/HelveticaNeueNormal.otf")
     format("opentype");
   font-weight: 400;
   font-style: normal;
@@ -32,16 +31,7 @@ html {
 
 @font-face {
   font-family: "Helvetica Neue";
-  src: url("./assets/fonts/helvetica-neue/HelveticaNeue-Medium.otf")
-    format("opentype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Helvetica Neue";
-  src: url("./assets/fonts/helvetica-neue/HelveticaNeueBold.ttf")
+  src: url("./assets/fonts/helvetica-neue/HelveticaNeueSemiBold.ttf")
     format("truetype");
   font-weight: 700;
   font-style: normal;
