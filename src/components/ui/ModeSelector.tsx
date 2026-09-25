@@ -17,7 +17,7 @@ export function ModeSelector({
   return (
     <div
       className={cn(
-        "relative flex w-full overflow-hidden",
+        "relative flex w-full",
         "rounded-full",
         "transition-colors duration-500",
         modeStyles[currentMode].bgPrimary
@@ -26,8 +26,8 @@ export function ModeSelector({
       <div
         className={cn(
           "absolute top-1 bottom-1 left-1",
-          "bg-white rounded-full ",
-          "transition-all duration-500 ease-in-out",
+          "bg-white rounded-full",
+          "transition-all ease-in-out duration-500",
           modeStyles[currentMode].translate
         )}
         style={{ width: "calc((100% - 0.5rem) / 3)" }}
@@ -40,8 +40,9 @@ export function ModeSelector({
           className={cn(
             "flex flex-1 h-13 items-center justify-center z-10",
             "text-[20px] sm:text-2xl",
-            "cursor-pointer transition-colors duration-500",
-            currentMode === mode ? modeStyles[currentMode].text : "text-white/60"
+            "transition-colors duration-500",
+            "cursor-pointer",
+            currentMode === mode ? modeStyles[currentMode].text : "text-white/70"
           )}
         >
           <span>

@@ -40,7 +40,7 @@ export function MainButton({
       onClick={handleClick}
       disabled={disabled}
       className={cn(
-        "relative flex h-[clamp(4rem,6vh,9rem)] w-full items-center rounded-full cursor-pointer overflow-hidden p-1",
+        "relative flex h-13 w-full items-center rounded-full cursor-pointer overflow-hidden p-1",
         isSessionActive ? "justify-end" : "justify-start",
         className,
       )}
@@ -50,10 +50,10 @@ export function MainButton({
         className="absolute inset-0 z-0 bg-white"
       />
 
-      <div className="absolute right-7 flex h-full items-center pointer-events-none z-10">
+      <div className="absolute right-7 flex h-full items-center z-10 pointer-events-none">
         <MotionFade
           visible={!isSessionActive}
-          className="text-[length:clamp(1.4rem,4vmin,1.5rem)]"
+          className="text-[21px] sm:text-2xl"
         >
           {t("start")}
         </MotionFade>
@@ -67,11 +67,11 @@ export function MainButton({
         )}
       />
 
-      <div className="absolute left-7 flex h-full items-center pointer-events-none z-10">
+      <div className="absolute left-7 flex h-full items-center z-10 pointer-events-none">
         <MotionFade
           visible={isSessionActive}
           duration={0.5}
-          className="text-white text-[length:clamp(1.4rem,4vmin,1.5rem)]"
+          className="text-white text-[21px] sm:text-2xl"
         >
           {t("finish")}
         </MotionFade>
@@ -79,8 +79,8 @@ export function MainButton({
 
       <motion.div
         layout
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        className="relative z-20 flex h-full aspect-square shrink-0 items-center justify-center rounded-full overflow-hidden"
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+        className="relative flex h-full aspect-square shrink-0 items-center justify-center rounded-full overflow-hidden z-20 "
       >
         <MotionFade
           visible={!isSessionActive}
@@ -102,8 +102,8 @@ export function MainButton({
         >
           <ArrowRight
             className={cn(
-              "h-8 w-8 md:h-9 md:w-9 transition-colors duration-500",
-              isSessionActive ? `text-[var(--color-${currentMode})]` : "text-white",
+              "h-7 w-7 md:h-8 md:w-8 transition-colors duration-500",
+              isSessionActive ? modeStyles[currentMode].text : "text-white",
             )}
             strokeWidth={2.5}
           />

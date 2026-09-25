@@ -30,36 +30,35 @@ export function CycleSelector({
   const canDecrease = cycles > 3;
   const canIncrease = cycles < 9;
 
-  const disabledIconColor = `color-mix(in srgb, white 60%, var(--color-${currentMode}))`;
-
   return (
-    <div className={cn("relative flex flex-col w-full items-start", className)}>
+    <div className={cn(
+      "relative flex flex-col w-full items-start",
+      className
+    )}>
       <div
         className={cn(
-          "absolute top-[-25px] pl-4",
-          "text-[17px]/snug sm:text-[19px]/tight",
+          "absolute -top-6 sm:-top-6.75 pl-4",
+          "text-[17px] sm:text-[19px]",
         )}
       >
         {t("cycles")}
       </div>
 
       <div className="relative flex h-11 sm:h-12 w-28 sm:w-32 items-center justify-center overflow-hidden rounded-full">
-        {/* Fundo: cor do modo (sessão parada) */}
         <MotionFade
           visible={!isSessionActive}
           className={cn(
-            "absolute inset-0 z-0 transition-colors duration-500",
+            "absolute inset-0 z-0",
+            "transition-colors duration-500",
             modeStyles[currentMode].bgPrimary,
           )}
         />
 
-        {/* Fundo: branco (sessão ativa) */}
         <MotionFade
           visible={isSessionActive}
           className="absolute inset-0 z-0 bg-white"
         />
 
-        {/* Conteúdo: seletor */}
         <MotionFade
           visible={!isSessionActive}
           className={cn(
@@ -70,17 +69,19 @@ export function CycleSelector({
           <motion.button
             onClick={onDecrease}
             disabled={!canDecrease}
-            whileTap={canDecrease ? { scale: 0.8 } : undefined}
+            whileTap={canDecrease ? { scale: 0.85 } : undefined}
             transition={{ duration: 0.15, ease: "easeInOut" }}
             className={cn(
-              "flex h-full aspect-square shrink-0 items-center justify-center",
+              "flex h-full items-center justify-center aspect-square shrink-0",
               "rounded-full bg-white/25 will-change-transform",
               canDecrease ? "cursor-pointer" : "cursor-default",
             )}
           >
             <Minus
-              className="h-5 w-5 sm:h-6 sm:w-6 transition-colors"
-              style={{ color: canDecrease ? "white" : disabledIconColor }}
+              className={cn("h-5 sm:h-6",
+                "transition-colors",
+                canDecrease ? "white" : modeStyles[currentMode].text,
+              )}
               strokeWidth={3.5}
             />
           </motion.button>
@@ -99,29 +100,30 @@ export function CycleSelector({
           <motion.button
             onClick={onIncrease}
             disabled={!canIncrease}
-            whileTap={canIncrease ? { scale: 0.8 } : undefined}
+            whileTap={canIncrease ? { scale: 0.85 } : undefined}
             transition={{ duration: 0.15, ease: "easeInOut" }}
             className={cn(
-              "flex h-full aspect-square shrink-0 items-center justify-center",
+              "flex h-full items-center justify-center aspect-square shrink-0",
               "rounded-full bg-white/25 will-change-transform",
               canIncrease ? "cursor-pointer" : "cursor-default",
             )}
           >
             <Plus
-              className="h-5 w-5 sm:h-6 sm:w-6 transition-colors"
-              style={{ color: canIncrease ? "white" : disabledIconColor }}
+              className={cn("h-5 sm:h-6",
+                "transition-colors duration-500",
+                canIncrease ? "white" : modeStyles[currentMode].text,
+              )}
               strokeWidth={3.5}
             />
           </motion.button>
         </MotionFade>
 
-        {/* Conteúdo: contador da sessão */}
         <MotionFade
           visible={isSessionActive}
           className={cn(
             "absolute inset-0 flex w-full items-center justify-center z-10",
-            "text-[32px] sm:text-[33px]",
-            `text-[var(--color-${currentMode})]`,
+            "text-[28px] sm:text-[33px]",
+            modeStyles[currentMode].text,
           )}
         >
           <span className="flex items-baseline">
