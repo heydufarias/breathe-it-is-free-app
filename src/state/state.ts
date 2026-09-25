@@ -15,7 +15,7 @@ export interface State {
 }
 
 const currentMode = (localStorage.getItem("breathMode") as BreathMode) || "relax";
-const cycles = Number(localStorage.getItem("cycles")) || 3;
+const cycles = Number(localStorage.getItem("cycles")) || 6;
 
 const initialState: State = {
   currentMode,
