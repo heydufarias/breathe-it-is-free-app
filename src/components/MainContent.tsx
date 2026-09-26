@@ -134,7 +134,7 @@ export function MainContent() {
   return (
     <div className="flex h-full w-full items-center justify-center px-3">
       <div className="flex flex-col h-full w-full max-w-120">
-        <div className="relative w-full h-29">
+        <div className="relative h-29 w-full">
           <MotionFade
             visible={!isSessionActive}
             duration={0.5}
@@ -171,9 +171,9 @@ export function MainContent() {
           </AnimatePresence>
         </div>
 
-        <div className="flex w-full items-center gap-5">
+        <div className="flex w-full items-center justify-center gap-5">
           <MainButton
-            // className="flex-[1]"
+            className="w-64 xs:w-50 sm:w-56"
             currentMode={currentMode}
             onStart={startSession}
             onFinish={finishSession}
@@ -182,7 +182,6 @@ export function MainContent() {
           />
 
           <CycleSelector
-            // className="flex-[1.2] xs:flex-1"
             currentMode={currentMode}
             cycles={cycles}
             onDecrease={decreaseCycles}

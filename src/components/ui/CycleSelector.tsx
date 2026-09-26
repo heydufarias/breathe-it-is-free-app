@@ -32,7 +32,7 @@ export function CycleSelector({
 
   return (
     <div className={cn(
-      "relative flex flex-col w-full items-start",
+      "relative flex flex-col items-start",
       className
     )}>
       <div

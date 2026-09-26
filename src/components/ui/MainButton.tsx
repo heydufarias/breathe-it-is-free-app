@@ -40,7 +40,7 @@ export function MainButton({
       onClick={handleClick}
       disabled={disabled}
       className={cn(
-        "relative flex h-13 w-full items-center rounded-full cursor-pointer overflow-hidden p-1",
+        "relative flex h-13 sm:h-14 items-center rounded-full cursor-pointer overflow-hidden p-1",
         isSessionActive ? "justify-end" : "justify-start",
         className,
       )}
@@ -50,7 +50,7 @@ export function MainButton({
         className="absolute inset-0 z-0 bg-white"
       />
 
-      <div className="absolute right-7 flex h-full items-center z-10 pointer-events-none">
+      <div className="absolute right-4 sm:right-7 flex h-full items-center z-10 pointer-events-none">
         <MotionFade
           visible={!isSessionActive}
           className="text-[21px] sm:text-2xl"
@@ -67,7 +67,7 @@ export function MainButton({
         )}
       />
 
-      <div className="absolute left-7 flex h-full items-center z-10 pointer-events-none">
+      <div className="absolute left-4 sm:left-7 flex h-full items-center z-10 pointer-events-none">
         <MotionFade
           visible={isSessionActive}
           duration={0.5}
