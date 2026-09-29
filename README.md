@@ -4,7 +4,7 @@ A minimal breathing app for three moments: relax, focus, and sleep. No feed, no 
 
 ## Why this exists
 
-Most apps are designed to hold people's attention. This one is designed to return it. A single breathing pattern and a timer, nothing else.
+Most apps are designed to hold people's attention. This one is designed to return it.
 
 ## Modes
 
@@ -27,7 +27,3 @@ Most apps are designed to hold people's attention. This one is designed to retur
 npm install
 npm run dev
 ```
-
-## License
-
-MIT. See LICENSE for details.
