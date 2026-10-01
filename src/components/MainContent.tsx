@@ -72,7 +72,7 @@ export function MainContent() {
                 key={secondsLeft}
                 scale
                 transition={{ duration: 0.25, ease: "easeOut" }}
-                className="absolute text-[90px] sm:text-[100px]"
+                className="absolute text-[80px] sm:text-[100px]"
               >
                 {secondsLeft}
               </MotionInSpan>
@@ -96,7 +96,7 @@ export function MainContent() {
             <MotionInSpan
               key={phaseIndex}
               transition={{ duration: 0.5, ease: "easeIn" }}
-              className="absolute text-[90px] sm:text-[65px] tracking-tight text-center"
+              className="absolute text-[47px] xs:text-[60px] sm:text-[65px] tracking-tight text-center"
             >
               {t(`session.phases.${currentPhase.label}`)}
             </MotionInSpan>
@@ -106,27 +106,27 @@ export function MainContent() {
     }
 
     if (sessionStage === "done") {
-    return (
-      <MotionIn
-        key="done"
-        transition={{ duration: 1.2, ease: "easeInOut" }}
-        className={cn(
-          "absolute flex flex-col h-full w-full items-center justify-center",
-          "text-[90px] sm:text-[40px] tracking-tight text-center",
-          {
-            relax: "leading-8",
-            focus: "leading-7.5",
-            sleep: "leading-8",
-          }[currentMode]
-        )}
-      >
-        {t(`session.done.${currentMode}`).split(" ").map((word, index) => (
-          <span key={index} className="block">
-            {word}
-          </span>
-        ))}
-      </MotionIn>
-    );
+      return (
+        <MotionIn
+          key="done"
+          transition={{ duration: 1.2, ease: "easeInOut" }}
+          className={cn(
+            "absolute flex flex-col h-full w-full items-center justify-center",
+            "text-[30px] xs:text-[36px] sm:text-[40px] tracking-tight text-center",
+            {
+              relax: "leading-6 xs:leading-8",
+              focus: "leading-5.5 xs:leading-7.5",
+              sleep: "leading-6 xs:leading-8",
+            }[currentMode]
+          )}
+        >
+          {t(`session.done.${currentMode}`).split(" ").map((word, index) => (
+            <span key={index} className="block">
+              {word}
+            </span>
+          ))}
+        </MotionIn>
+      );
     }
 
     return null;
