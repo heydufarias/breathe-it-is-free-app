@@ -73,13 +73,13 @@ export function CycleSelector({
             transition={{ duration: 0.15, ease: "easeInOut" }}
             className={cn(
               "flex h-full items-center justify-center aspect-square shrink-0",
-              "rounded-full bg-white/25 will-change-transform",
+              "rounded-full bg-white/25 will-change-transform duration-500",
               canDecrease ? "cursor-pointer" : "cursor-default",
             )}
           >
             <Minus
               className={cn("h-5 sm:h-6",
-                "transition-colors",
+                "transition-colors duration-200",
                 canDecrease ? "white" : modeStyles[currentMode].text,
               )}
               strokeWidth={3.5}
@@ -104,13 +104,13 @@ export function CycleSelector({
             transition={{ duration: 0.15, ease: "easeInOut" }}
             className={cn(
               "flex h-full items-center justify-center aspect-square shrink-0",
-              "rounded-full bg-white/25 will-change-transform",
+              "rounded-full bg-white/25 will-change-transform duration-500",
               canIncrease ? "cursor-pointer" : "cursor-default",
             )}
           >
             <Plus
               className={cn("h-5 sm:h-6",
-                "transition-colors duration-500",
+                "transition-colors duration-200",
                 canIncrease ? "white" : modeStyles[currentMode].text,
               )}
               strokeWidth={3.5}
