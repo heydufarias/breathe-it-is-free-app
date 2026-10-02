@@ -1,5 +1,6 @@
 import { AnimatePresence } from "framer-motion";
 import { useLayoutEffect, useState } from "react";
+import { CreditLink } from "./components/CreditLink";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Info } from "./components/Info";
@@ -41,6 +42,8 @@ export default function App() {
       />
 
       <MainContent />
+
+      <CreditLink currentMode={currentMode} isSessionActive={isSessionActive} />
 
       <Footer />
 
