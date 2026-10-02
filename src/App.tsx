@@ -5,6 +5,7 @@ import { Header } from "./components/Header";
 import { Info } from "./components/Info";
 import { MainContent } from "./components/MainContent";
 import { modeStyles } from "./lib/consts";
+import { useFavicon } from "./lib/useFavicon";
 import { cn } from "./lib/utils";
 import { state } from "./state/state";
 
@@ -21,6 +22,8 @@ export default function App() {
   useLayoutEffect(() => {
     document.documentElement.className = modeStyles[currentMode].bgSurface;
   }, [currentMode]);
+
+  useFavicon(currentMode);
 
   return (
     <div
