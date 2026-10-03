@@ -6,11 +6,10 @@ import { cn } from "../lib/utils";
 
 interface FooterProps {
   currentMode: BreathMode;
-  isSessionActive: boolean;
 }
 
-export function Footer({ currentMode, isSessionActive }: FooterProps) {
-  const { t, i18n } = useTranslation();
+export function Footer({ currentMode }: FooterProps) {
+  const { i18n } = useTranslation();
   const current = i18n.language;
 
   return (
@@ -53,16 +52,15 @@ export function Footer({ currentMode, isSessionActive }: FooterProps) {
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          "absolute left-1/2 bottom-2 -translate-x-1/2",
+          "absolute right-0.5 sm:right-2 bottom-2.5 sm:bottom-2",
           "flex h-10 items-end px-3",
-          "text-[14px] font-semibold tracking-wide",
+          "text-[11px] sm:text-[14px] font-semibold tracking-wide",
           modeStyles[currentMode].text,
           "opacity-40 hover:opacity-100",
-          "transition-all duration-500",
-          isSessionActive && "opacity-0 pointer-events-none"
+          "transition-colors duration-500",
         )}
       >
-        {t("by")} dufarias
+        By dufarias
       </a>
 
       <span className="flex items-baseline gap-[1.5px]">

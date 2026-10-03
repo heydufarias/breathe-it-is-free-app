@@ -43,7 +43,6 @@ export default function App() {
       <MainContent />
 
       <Footer
-        isSessionActive={isSessionActive}
         currentMode={currentMode}
       />
 
