@@ -1,5 +1,6 @@
 {
   "about": "About",
+  "by": "By",
   "modes": {
     "relax": "Relax",
     "focus": "Focus",
@@ -9,24 +10,20 @@
   "finish": "Finish",
   "cycles": "Cycles",
   "info": {
-    "howToUse": {
-      "title": "How to use",
-      "text": "Select a mode, choose how many cycles, press \"Start\" and follow the bubble.\nWhen it grows, inhale. When it shrinks, exhale."
-    },
     "modesSection": {
       "title": "Modes",
       "relax": {
-        "pattern": "5s In · 5s Out",
+        "pattern": "5s Inhale · 5s Exhale",
         "description": "Coherent breathing. Activates the parasympathetic system, which brings calm to the body."
       },
 
       "focus": {
-        "pattern": "4s In · 4s Hold · 4s Out · 4s Hold",
+        "pattern": "4s Inhale · 4s Hold · 4s Exhale · 4s Hold",
         "description": "Box breathing. Equal intervals create balance in the nervous system, bringing calm and focus."
       },
 
       "sleep": {
-        "pattern": "4s In · 7s Hold · 8s Out",
+        "pattern": "4s Inhale · 7s Hold · 8s Exhale",
         "description": "4-7-8 breathing. Slows the body down, step by step, for a peaceful night."
       }
     }

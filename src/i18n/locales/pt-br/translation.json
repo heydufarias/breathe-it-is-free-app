@@ -1,5 +1,6 @@
 {
   "about": "Sobre",
+  "by": "Por",
   "modes": {
     "relax": "Relaxar",
     "focus": "Focar",
@@ -9,25 +10,19 @@
   "finish": "Finalizar",
   "cycles": "Ciclos",
   "info": {
-    "howToUse": {
-      "title": "Como usar",
-      "text": "Selecione o modo, defina quantos ciclos, aperte \"Começar\" e siga a bolha.\nQuando ela crescer, inspire. Quando ela encolher, expire."
-    },
     "modesSection": {
       "title": "Modos",
       "relax": {
         "pattern": "5s Inspira · 5s Expira",
-        "description": "Respiração coerente. Ativa o sistema parassimpático, que traz calma ao corpo."
+        "description": "Quando a entrada e a saída de ar têm a mesma duração, os batimentos do coração desaceleram em sintonia, desarmando a tensão acumulada sem esforço."
       },
-
       "focus": {
         "pattern": "4s Inspira · 4s Segura · 4s Expira · 4s Segura",
-        "description": "Respiração quadrada. Intervalos iguais criam equilíbrio no sistema nervoso, recuperando o foco."
+        "description": "A estrutura simétrica de quatro tempos idênticos estabiliza o sistema nervoso, silenciando o ruído mental e ancorando a atenção no presente."
       },
-
       "sleep": {
         "pattern": "4s Inspira · 7s Segura · 8s Expira",
-        "description": "Respiração 4-7-8. Desacelera o corpo, passo a passo, para uma noite tranquila."
+        "description": "Expirar pelo dobro do tempo força a frequência do coração a cair progressivamente, desligando o estado de alerta até o corpo se entregar ao sono."
       }
     }
   },
