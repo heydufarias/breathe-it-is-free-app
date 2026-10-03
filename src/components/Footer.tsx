@@ -52,9 +52,9 @@ export function Footer({ currentMode }: FooterProps) {
         target="_blank"
         rel="noopener noreferrer"
         className={cn(
-          "absolute right-0.5 sm:right-2 bottom-2.5 sm:bottom-2",
+          "absolute right-1 sm:right-2.5 bottom-2.5 sm:bottom-2",
           "flex h-10 items-end px-3",
-          "text-[11px] sm:text-[14px] font-semibold tracking-wide",
+          "text-[11px] sm:text-[14px] font-semibold tracking-normal",
           modeStyles[currentMode].text,
           "opacity-40 hover:opacity-100",
           "transition-colors duration-500",
