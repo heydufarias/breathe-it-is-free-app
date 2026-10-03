@@ -27,7 +27,7 @@ export function Info({ onClose }: InfoProps) {
         transition={{ duration: 0.2, ease: "easeOut" }}
         className={cn(
           "relative flex flex-col max-h-[70vh] max-w-md w-full",
-          "bg-white rounded-4xl overflow-hidden"
+          "bg-white rounded-4xl overflow-hidden tracking-tight"
         )}
       >
         <div className="flex h-12 w-full items-end justify-end pr-2">
@@ -43,15 +43,11 @@ export function Info({ onClose }: InfoProps) {
         </div>
 
         <div className="flex flex-col px-8 pb-8 overflow-y-auto">
-            <p className={cn(
-          
-              "text-[16px] font-medium tracking-tight leading-4.5"
-            )}>
-              {t(`info.description`)}
-            </p>
+          <p className="text-[16px] font-medium leading-4.5">
+            {t(`info.description`)}
+          </p>
           <section>
-
-            <p className="pt-6 pb-2 text-[16px] font-semibold tracking-tight leading-4.5">
+            <p className="pt-6 pb-2 text-[16px] font-semibold leading-4.5">
               {t("info.modesSection.title")}:
             </p>
 
@@ -60,7 +56,7 @@ export function Info({ onClose }: InfoProps) {
                 <div key={mode}>
                   <span
                     className={cn(
-                      "text-[18px] font-bold leading-0",
+                      "text-[18px] font-bold tracking-normal leading-0",
                       modeStyles[mode].text
                     )}
                   >
@@ -70,7 +66,7 @@ export function Info({ onClose }: InfoProps) {
                   <p
                     className={cn(
                       "-mt-0.5",
-                      "text-[14px] font-semibold leading-4",
+                      "text-[14px] font-semibold tracking-normal leading-4",
                       "opacity-50",
                       modeStyles[mode].text,
                     )}
@@ -78,16 +74,12 @@ export function Info({ onClose }: InfoProps) {
                     {t(`info.modesSection.${mode}.pattern`)}
                   </p>
 
-                  <p className={cn(
-                    "mt-1.5",
-                    "text-[16px] font-medium tracking-tight leading-4.5"
-                  )}>
+                  <p className="mt-1.5 text-[16px] font-medium leading-4.5">
                     {t(`info.modesSection.${mode}.description`)}
                   </p>
                 </div>
               ))}
             </div>
-
           </section>
         </div>
       </MotionIn>
