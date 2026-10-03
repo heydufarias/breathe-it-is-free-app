@@ -1,6 +1,5 @@
 {
   "about": "Sobre",
-  "by": "Por",
   "modes": {
     "relax": "Relaxar",
     "focus": "Focar",
@@ -10,19 +9,20 @@
   "finish": "Finalizar",
   "cycles": "Ciclos",
   "info": {
+    "description": "A maioria dos apps disputa sua atenção. Este faz o contrário: guia sua respiração por alguns minutos para ajudar você a relaxar, recuperar o foco ou desacelerar antes de dormir — sem pedir sua atenção em troca.",
     "modesSection": {
       "title": "Modos",
       "relax": {
         "pattern": "5s Inspira · 5s Expira",
-        "description": "Quando a entrada e a saída de ar têm a mesma duração, os batimentos do coração desaceleram em sintonia, desarmando a tensão acumulada sem esforço."
+        "description": "Um ritmo regular e equilibrado ajuda a desacelerar a respiração e reduzir a sensação de tensão."
       },
       "focus": {
         "pattern": "4s Inspira · 4s Segura · 4s Expira · 4s Segura",
-        "description": "A estrutura simétrica de quatro tempos idênticos estabiliza o sistema nervoso, silenciando o ruído mental e ancorando a atenção no presente."
+        "description": "Um ritmo constante e simétrico cria um ponto de atenção na respiração, ajudando a organizar a mente e recuperar o foco."
       },
       "sleep": {
         "pattern": "4s Inspira · 7s Segura · 8s Expira",
-        "description": "Expirar pelo dobro do tempo força a frequência do coração a cair progressivamente, desligando o estado de alerta até o corpo se entregar ao sono."
+        "description": "A expiração mais longa cria um ritmo mais lento, ajudando a desacelerar e preparar o corpo para o descanso."
       }
     }
   },

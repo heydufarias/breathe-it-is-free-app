@@ -18,7 +18,7 @@ export function Info({ onClose }: InfoProps) {
       className={cn(
         "absolute inset-0 flex items-center justify-center p-6 z-40",
         "bg-black/10 backdrop-blur-[2px]",
-        "text-[#b7b8b8]",
+        "text-[#c1c1c1]",
       )}
     >
       <MotionIn
@@ -30,28 +30,29 @@ export function Info({ onClose }: InfoProps) {
           "bg-white rounded-4xl overflow-hidden"
         )}
       >
-        <div className={cn(
-          "flex h-12 w-full items-end justify-end pr-2",
-          // " bg-red-500",
-
-        )}>
-
+        <div className="flex h-12 w-full items-end justify-end pr-2">
           <button
             onClick={onClose}
             className={cn(
               "flex items-center justify-center w-10 h-10",
-              // " bg-amber-400",
               "rounded-full cursor-pointer",
-
             )}
           >
-            <X className=" h-6" strokeWidth={2.5} />
+            <X className="h-6" strokeWidth={2.5} />
           </button>
         </div>
-        <div className="flex flex-col gap-8 px-8 pb-8 overflow-y-auto">
+
+        <div className="flex flex-col px-8 pb-8 overflow-y-auto">
+            <p className={cn(
+          
+              "text-[16px] font-medium tracking-tight leading-4.5"
+            )}>
+              {t(`info.description`)}
+            </p>
           <section>
-            <p className="mb-4 text-[16px] tracking-tight">
-              {t("info.modesSection.title")}
+
+            <p className="pt-6 pb-2 text-[16px] font-semibold tracking-tight leading-4.5">
+              {t("info.modesSection.title")}:
             </p>
 
             <div className="flex flex-col gap-5">
@@ -59,7 +60,7 @@ export function Info({ onClose }: InfoProps) {
                 <div key={mode}>
                   <span
                     className={cn(
-                      "text-lg font-bold leading-0 transition-colors duration-500",
+                      "text-[18px] font-bold leading-0",
                       modeStyles[mode].text
                     )}
                   >
@@ -68,21 +69,25 @@ export function Info({ onClose }: InfoProps) {
 
                   <p
                     className={cn(
-                      "-mt-1 text-[12px] font-semibold leading-3 transition-colors duration-500",
+                      "-mt-0.5",
+                      "text-[14px] font-semibold leading-4",
+                      "opacity-50",
                       modeStyles[mode].text,
-                      "opacity-50"
                     )}
                   >
                     {t(`info.modesSection.${mode}.pattern`)}
                   </p>
 
-                  <p className="mt-2 leading-4.5 text-[15px] font-medium tracking-tight">
+                  <p className={cn(
+                    "mt-1.5",
+                    "text-[16px] font-medium tracking-tight leading-4.5"
+                  )}>
                     {t(`info.modesSection.${mode}.description`)}
                   </p>
                 </div>
               ))}
             </div>
-          
+
           </section>
         </div>
       </MotionIn>
