@@ -2,6 +2,8 @@
 
 A minimal breathing app for three moments: relax, focus, and sleep. No feed, no notifications, no account.
 
+🔗 [heydufarias.github.io/breathe-it-is-free-app](https://heydufarias.github.io/breathe-it-is-free-app/)
+
 ## Why this exists
 
 Most apps are designed to hold people's attention. This one is designed to return it.
