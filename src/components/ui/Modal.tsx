@@ -26,20 +26,21 @@ export function Modal({ onClose, maxWidth = "max-w-md", children }: ModalProps) 
         onClick={(e) => e.stopPropagation()}
         transition={{ duration: 0.2, ease: "easeOut" }}
         className={cn(
-          "relative flex flex-col max-h-[70vh] w-full",
+          "flex flex-col max-h-[70vh] w-full",
           maxWidth,
           "bg-white rounded-4xl overflow-hidden tracking-tight"
         )}
       >
-        <div className="flex h-12 w-full items-end justify-end pr-2">
+        <div className="flex w-full items-end justify-end">
           <button
             onClick={onClose}
             className={cn(
-              "flex items-center justify-center w-10 h-10",
+              "flex h-10 w-10 items-center justify-center",
+              "mt-1.5 mr-1.5 sm:mt-2 sm:mr-2",
               "rounded-full cursor-pointer",
             )}
           >
-            <X className="h-6" strokeWidth={2.5} />
+            <X className="h-5 sm:h-6 hover:sm:scale-110 transition-transform duration-200" strokeWidth={2.5} />
           </button>
         </div>
 
