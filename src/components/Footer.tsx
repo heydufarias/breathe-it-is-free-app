@@ -6,9 +6,10 @@ import { cn } from "../lib/utils";
 
 interface FooterProps {
   currentMode: BreathMode;
+  onCreditClick: () => void;
 }
 
-export function Footer({ currentMode }: FooterProps) {
+export function Footer({ currentMode, onCreditClick }: FooterProps) {
   const { i18n } = useTranslation();
   const current = i18n.language;
 
@@ -47,21 +48,23 @@ export function Footer({ currentMode }: FooterProps) {
         })}
       </div>
 
-      <a
-        href="https://github.com/heydufarias"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={onCreditClick}
         className={cn(
           "absolute right-1 sm:right-2.5 bottom-2.5 sm:bottom-2",
-          "flex h-10 items-end px-3",
-          "text-[11px] sm:text-[14px] font-semibold tracking-normal",
+          "flex h-10 items-end px-3 gap-1",
+          "text-[11px] sm:text-[14px] font-semibold tracking-normal cursor-pointer",
           modeStyles[currentMode].text,
           "opacity-40 hover:opacity-100",
           "transition-colors duration-500",
         )}
       >
-        By dufarias
-      </a>
+        <span>By </span>
+        <span className="flex items-baseline gap-[0.1rem]">
+          <span>du</span>
+          <span>farias</span>
+        </span>
+      </button>
 
       <span className="flex items-baseline gap-[1.5px]">
         <span>&copy;</span>
