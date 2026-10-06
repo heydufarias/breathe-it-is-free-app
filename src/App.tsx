@@ -4,6 +4,7 @@ import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Info } from "./components/Info";
 import { MainContent } from "./components/MainContent";
+import { Profile } from "./components/Profile";
 import { modeStyles } from "./lib/consts";
 import { useFavicon } from "./lib/useFavicon";
 import { cn } from "./lib/utils";
@@ -15,9 +16,13 @@ export default function App() {
     (value) => value.sessionStage !== "idle"
   );
   const [showInfo, setShowInfo] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
 
   const openInfo = () => setShowInfo(true);
   const closeInfo = () => setShowInfo(false);
+
+  const openProfile = () => setShowProfile(true);
+  const closeProfile = () => setShowProfile(false);
 
   useLayoutEffect(() => {
     document.documentElement.className = modeStyles[currentMode].bgSurface;
@@ -44,10 +49,16 @@ export default function App() {
 
       <Footer
         currentMode={currentMode}
+        onCreditClick={openProfile}
       />
 
       <AnimatePresence>
         {showInfo && <Info onClose={closeInfo} />}
+        {showProfile &&
+          <Profile
+            currentMode={currentMode}
+            onClose={closeProfile}
+          />}
       </AnimatePresence>
     </div>
   );
