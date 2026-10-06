@@ -143,7 +143,10 @@ export function Blob() {
 
   return (
     <>
-      <Environment preset="studio" background={false} />
+      <Environment
+        files={`${import.meta.env.BASE_URL}hdri/studio.hdr`}
+        background={false}
+      />
 
       <mesh ref={meshRef}>
         <sphereGeometry args={[1, 256, 256]} />
