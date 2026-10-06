@@ -3,7 +3,7 @@ import { Environment } from "@react-three/drei";
 import { useFrame, useThree } from "@react-three/fiber";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-
+import studioHdr from "../../assets/hdri/studio.hdr";
 import { modeStyles } from "../../lib/consts";
 import { state } from "../../state/state";
 import { MagicalMaterialImpl } from "./MagicalMaterial";
@@ -143,10 +143,7 @@ export function Blob() {
 
   return (
     <>
-      <Environment
-        files={`${import.meta.env.BASE_URL}hdri/studio.hdr`}
-        background={false}
-      />
+      <Environment files={studioHdr} background={false} />
 
       <mesh ref={meshRef}>
         <sphereGeometry args={[1, 256, 256]} />
