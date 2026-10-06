@@ -55,7 +55,7 @@ export function Footer({ currentMode, onCreditClick }: FooterProps) {
           "flex h-10 items-end px-3 gap-1",
           "text-[11px] sm:text-[14px] font-semibold tracking-normal cursor-pointer",
           modeStyles[currentMode].text,
-          "opacity-40 hover:opacity-100",
+          "opacity-50 hover:opacity-100",
           "transition-colors duration-500",
         )}
       >
