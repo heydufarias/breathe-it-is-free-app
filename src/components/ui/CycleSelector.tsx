@@ -69,11 +69,11 @@ export function CycleSelector({
           <motion.button
             onClick={onDecrease}
             disabled={!canDecrease}
-            whileTap={canDecrease ? { scale: 0.80 } : undefined}
+            whileTap={canDecrease ? { scale: 0.85 } : undefined}
             transition={{ duration: 0.15, ease: "easeInOut" }}
             className={cn(
               "flex h-full items-center justify-center aspect-square shrink-0",
-              "rounded-full bg-white/25 will-change-transform duration-150",
+              "rounded-full bg-white/25 will-change-transform transition-colors duration-500",
               canDecrease ? "cursor-pointer" : "cursor-default",
             )}
           >
@@ -100,11 +100,11 @@ export function CycleSelector({
           <motion.button
             onClick={onIncrease}
             disabled={!canIncrease}
-            whileTap={canIncrease ? { scale: 0.80 } : undefined}
+            whileTap={canIncrease ? { scale: 0.85 } : undefined}
             transition={{ duration: 0.15, ease: "easeInOut" }}
             className={cn(
               "flex h-full items-center justify-center aspect-square shrink-0",
-              "rounded-full bg-white/25 will-change-transform duration-150",
+              "rounded-full bg-white/25 will-change-transform transition-colors duration-500",
               canIncrease ? "cursor-pointer" : "cursor-default",
             )}
           >

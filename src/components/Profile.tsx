@@ -2,6 +2,7 @@ import { modeStyles } from "../lib/consts";
 import type { BreathMode } from "../lib/types";
 import { cn } from "../lib/utils";
 import { Modal } from "./ui/Modal";
+import dufariasImage from "../assets/images/dufarias.jpg";
 
 interface ProfileProps {
   currentMode: BreathMode;
@@ -26,24 +27,30 @@ function LinkedinIcon() {
 
 export function Profile({ currentMode, onClose }: ProfileProps) {
   return (
-    <Modal onClose={onClose}>
+    <Modal onClose={onClose} >
       <div className="flex flex-col items-center">
-        <h2 className="text-3xl font-extrabold mb-5">du farias</h2>
+        <div className={cn(
+          "flex gap-1",
+          "text-[24px] sm:text-[28px] tracking-tight font-semibold"
+        )}>
+          <p>du</p>
+          <p>farias</p>
+        </div>
 
-        <div className="w-full aspect-[4/5] max-w-56 rounded-3xl overflow-hidden mb-4">
+        <div className="w-full max-w-56 mb-2 aspect-square rounded-3xl overflow-hidden">
           <img
-            src="https://i.pravatar.cc/400?img=12"
+            src={dufariasImage}
             alt="du farias"
             className="w-full h-full object-cover grayscale"
           />
         </div>
 
-        <p className="text-[16px] font-medium opacity-70 mb-3">
+        <p className="text-[14px] sm:text-[16px] text-center font-medium leading-3.5 opacity-70 mt-0.5 mb-4">
           Software Developer | Product Engineer
         </p>
 
-        <p className="text-[24px] font-medium text-center mb-6">
-          I like to build meaningful stuff. (:
+        <p className="text-[20px] sm:text-[24px] text-center font-medium leading-5 mb-6">
+          I like to build meaningful things. (:
         </p>
 
         <div className="flex gap-5">
@@ -54,7 +61,7 @@ export function Profile({ currentMode, onClose }: ProfileProps) {
             className={cn(
               "flex items-center justify-center",
               modeStyles[currentMode].text,
-              "transition-[filter] duration-300 hover:brightness-90"
+              "transition-[filter] duration-300 opacity-90 hover:opacity-100"
             )}
           >
             <GithubIcon />
@@ -67,7 +74,7 @@ export function Profile({ currentMode, onClose }: ProfileProps) {
             className={cn(
               "flex items-center justify-center",
               modeStyles[currentMode].text,
-              "transition-[filter] duration-300 hover:brightness-90"
+              "transition-[filter] duration-300 opacity-100 sm:opacity-80 hover:opacity-100"
             )}
           >
             <LinkedinIcon />

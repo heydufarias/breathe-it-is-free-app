@@ -36,7 +36,7 @@ export function Modal({ onClose, maxWidth = "max-w-md", children }: ModalProps) 
             onClick={onClose}
             className={cn(
               "flex h-10 w-10 items-center justify-center",
-              "mt-1.5 mr-1.5 sm:mt-2 sm:mr-2",
+              "mt-2 mr-2 sm:mt-3 sm:mr-3",
               "rounded-full cursor-pointer",
             )}
           >
