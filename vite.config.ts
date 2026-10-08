@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 
 export default defineConfig({
-  base: '/breathe-it-is-free-app/',
+  base: '/',
   plugins: [react(), tailwindcss()],
   assetsInclude: ['**/*.hdr'],
 })
