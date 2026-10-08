@@ -27,12 +27,14 @@ function LinkedinIcon() {
 
 export function Profile({ currentMode, onClose }: ProfileProps) {
   return (
-    <Modal onClose={onClose} >
+    <Modal onClose={onClose}>
       <div className="flex flex-col items-center">
-        <div className={cn(
-          "flex gap-1",
-          "text-[24px] sm:text-[28px] tracking-tight font-semibold"
-        )}>
+        <div
+          className={cn(
+            "flex gap-1",
+            "text-[24px] sm:text-[28px] tracking-tight font-semibold"
+          )}
+        >
           <p>du</p>
           <p>farias</p>
         </div>
@@ -45,11 +47,11 @@ export function Profile({ currentMode, onClose }: ProfileProps) {
           />
         </div>
 
-        <p className="text-[14px] sm:text-[16px] text-center font-medium leading-3.5 opacity-70 mt-0.5 mb-4">
+        <p className="text-[14px] sm:text-[15px] text-center font-medium leading-4 opacity-70 mb-5">
           Software Developer | Product Engineer
         </p>
 
-        <p className="text-[20px] sm:text-[24px] text-center font-medium leading-5 mb-6">
+        <p className="text-[19px] sm:text-[23px] text-center font-medium leading-6 mb-6">
           I like to build meaningful things. (:
         </p>
 

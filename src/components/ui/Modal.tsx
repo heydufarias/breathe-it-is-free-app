@@ -40,7 +40,7 @@ export function Modal({ onClose, maxWidth = "max-w-md", children }: ModalProps) 
               "rounded-full cursor-pointer",
             )}
           >
-            <X className="h-5 sm:h-6 hover:sm:scale-110 transition-transform duration-200" strokeWidth={2.5} />
+            <X className="h-6 hover:sm:scale-110 transition-transform duration-200" strokeWidth={2.5} />
           </button>
         </div>
 
