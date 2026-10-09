@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import { AnimatePresence } from "framer-motion";
 import { useLayoutEffect, useState } from "react";
 import { Footer } from "./components/Footer";
@@ -60,6 +61,8 @@ export default function App() {
             onClose={closeProfile}
           />}
       </AnimatePresence>
+
+      <Analytics />
     </div>
   );
 }
