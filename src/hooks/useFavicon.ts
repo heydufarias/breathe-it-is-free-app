@@ -14,16 +14,35 @@ export function useFavicon(mode: BreathMode) {
     const color = getComputedStyle(probe).backgroundColor;
     document.body.removeChild(probe);
 
-    const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-    <circle cx="16" cy="16" r="14" fill="${color}" /></svg>`;
-    const href = `data:image/svg+xml,${encodeURIComponent(svg)}`;
+    const canvas = document.createElement("canvas");
+    canvas.width = 64;
+    canvas.height = 64;
+    const ctx = canvas.getContext("2d");
 
-    let link = document.querySelector<HTMLLinkElement>("link[rel='icon']");
-    if (!link) {
-      link = document.createElement("link");
-      link.rel = "icon";
-      document.head.appendChild(link);
+    if (ctx) {
+      ctx.beginPath();
+      ctx.arc(32, 32, 28, 0, 2 * Math.PI);
+      ctx.fillStyle = color;
+      ctx.fill();
+
+      const href = canvas.toDataURL("image/png");
+
+      let link = document.querySelector<HTMLLinkElement>("link[rel='icon']");
+      if (!link) {
+        link = document.createElement("link");
+        link.rel = "icon";
+        document.head.appendChild(link);
+      }
+      link.type = "image/png";
+      link.href = href;
+
+      let appleLink = document.querySelector<HTMLLinkElement>("link[rel='apple-touch-icon']");
+      if (!appleLink) {
+        appleLink = document.createElement("link");
+        appleLink.rel = "apple-touch-icon";
+        document.head.appendChild(appleLink);
+      }
+      appleLink.href = href;
     }
-    link.href = href;
   }, [mode]);
 }
