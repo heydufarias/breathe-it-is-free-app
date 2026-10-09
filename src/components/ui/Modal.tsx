@@ -1,4 +1,3 @@
-
 import { X } from "lucide-react";
 import type { ReactNode } from "react";
 import { cn } from "../../lib/utils";
@@ -16,11 +15,13 @@ export function Modal({ onClose, maxWidth = "max-w-md", children }: ModalProps) 
       onClick={onClose}
       transition={{ duration: 0.2, ease: "easeOut" }}
       className={cn(
-        "absolute inset-0 flex items-center justify-center p-6 z-40",
+        "fixed inset-0 flex items-center justify-center p-6 z-40",
         "bg-black/10 backdrop-blur-[2px]",
         "text-[#c1c1c1]",
       )}
     >
+      <style>{`body { overflow: hidden; }`}</style>
+
       <MotionIn
         scale
         onClick={(e) => e.stopPropagation()}
