@@ -2,13 +2,15 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { AnimatePresence } from "framer-motion";
 import { useLayoutEffect, useState } from "react";
+import dufariasImage from "./assets/images/dufarias.jpg";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Info } from "./components/Info";
 import { MainContent } from "./components/MainContent";
 import { Profile } from "./components/Profile";
+import { useFavicon } from "./hooks/useFavicon";
+import { usePreloadImage } from "./hooks/usePreloadImage";
 import { modeStyles } from "./lib/consts";
-import { useFavicon } from "./lib/useFavicon";
 import { cn } from "./lib/utils";
 import { state } from "./state/state";
 
@@ -31,6 +33,7 @@ export default function App() {
   }, [currentMode]);
 
   useFavicon(currentMode);
+  usePreloadImage(dufariasImage);
 
   return (
     <div

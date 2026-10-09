@@ -1,6 +1,6 @@
 import { useLayoutEffect } from "react";
-import { modeStyles } from "./consts";
-import type { BreathMode } from "./types";
+import { modeStyles } from "../lib/consts";
+import type { BreathMode } from "../lib/types";
 
 export function useFavicon(mode: BreathMode) {
   useLayoutEffect(() => {
