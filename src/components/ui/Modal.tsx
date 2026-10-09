@@ -45,7 +45,7 @@ export function Modal({ onClose, maxWidth = "max-w-md", children }: ModalProps) 
           </button>
         </div>
 
-        <div className="flex flex-col px-8 pb-8 overflow-y-auto">
+        <div className="flex flex-col px-8 pb-8 overflow-y-auto min-h-0">
           {children}
         </div>
       </MotionIn>
