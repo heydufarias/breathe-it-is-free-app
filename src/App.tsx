@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { AnimatePresence } from "framer-motion";
 import { useLayoutEffect, useState } from "react";
 import { Footer } from "./components/Footer";
@@ -63,6 +64,7 @@ export default function App() {
       </AnimatePresence>
 
       <Analytics />
+      <SpeedInsights />
     </div>
   );
 }
