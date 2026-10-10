@@ -1,9 +1,9 @@
+import type { ReactNode } from "react";
+import dufariasImage from "../assets/images/dufarias.jpg";
 import { modeStyles } from "../lib/consts";
 import type { BreathMode } from "../lib/types";
 import { cn } from "../lib/utils";
 import { Modal } from "./ui/Modal";
-import dufariasImage from "../assets/images/dufarias.jpg";
-import type { ReactNode } from "react";
 
 interface ProfileProps {
   currentMode: BreathMode;
