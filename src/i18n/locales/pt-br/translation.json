@@ -11,18 +11,15 @@
   "info": {
     "description": "O Breathe é um app minimalista de respiração com orientação visual para ajudar você a relaxar, focar ou desacelerar antes de dormir.",
     "modesSection": {
-      "title": "Modos",
+      "title": "Modos:",
       "relax": {
-        "pattern": "5s Inspira · 5s Expira",
-        "description": "Um ritmo regular e equilibrado ajuda a desacelerar a respiração e reduzir a sensação de tensão."
+        "description": "Inspirar e expirar devagar, pelo mesmo tempo, cria um ritmo constante que pode ajudar você a relaxar."
       },
       "focus": {
-        "pattern": "4s Inspira · 4s Segura · 4s Expira · 4s Segura",
-        "description": "Um ritmo constante e simétrico cria um ponto de atenção na respiração, ajudando a organizar a mente e recuperar o foco."
+        "description": "Contar as quatro etapas direciona sua atenção para a respiração e ajuda você a manter o foco."
       },
       "sleep": {
-        "pattern": "4s Inspira · 7s Segura · 8s Expira",
-        "description": "A expiração mais longa cria um ritmo mais lento, ajudando a desacelerar e preparar o corpo para o descanso."
+        "description": "O ritmo lento de 4–7–8 oferece uma prática respiratória tranquila e repetível para desacelerar antes de dormir."
       }
     }
   },
