@@ -13,15 +13,15 @@
     "modesSection": {
       "title": "Modos",
       "relax": {
-        "pattern": "Inspira 5 s · Expira 5 s",
+        "pattern": "Inspira 5s · Expira 5s",
         "description": "Inspirar e expirar devagar, pelo mesmo tempo, cria um ritmo constante que pode ajudar você a relaxar."
       },
       "focus": {
-        "pattern": "Inspira 4 s · Segura 4 s · Expira 4 s · Segura 4 s",
+        "pattern": "Inspira 4s · Segura 4s · Expira 4s · Segura 4s",
         "description": "Contar as quatro etapas direciona sua atenção para a respiração e ajuda você a manter o foco."
       },
       "sleep": {
-        "pattern": "Inspira 4 s · Segura 7 s · Expira 8 s",
+        "pattern": "Inspira 4s · Segura 7s · Expira 8s",
         "description": "O ritmo lento de 4–7–8 oferece uma prática respiratória tranquila e repetível para desacelerar antes de dormir."
       }
     }
