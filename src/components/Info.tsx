@@ -47,18 +47,6 @@ export function Info({ onClose }: InfoProps) {
               <p className="mt-1.5 text-[16px] font-medium leading-4.5">
                 {t(`info.modesSection.${mode}.description`)}
               </p>
-              <p className="mt-1.5 text-[16px] font-medium leading-4.5">
-                {t(`info.modesSection.${mode}.description`)}
-              </p>
-              <p className="mt-1.5 text-[16px] font-medium leading-4.5">
-                {t(`info.modesSection.${mode}.description`)}
-              </p>
-              <p className="mt-1.5 text-[16px] font-medium leading-4.5">
-                {t(`info.modesSection.${mode}.description`)}
-              </p>
-              <p className="mt-1.5 text-[16px] font-medium leading-4.5">
-                {t(`info.modesSection.${mode}.description`)}
-              </p>
             </div>
           ))}
         </div>

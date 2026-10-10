@@ -55,7 +55,7 @@ export function Modal({
         <div
           className={cn(
             "flex flex-col flex-1 min-h-0 overflow-y-auto",
-            "px-6 pb-6 sm:px-8 sm:pb-8"
+            "px-8 pb-8"
           )}
           style={{ WebkitOverflowScrolling: "touch" }}
         >

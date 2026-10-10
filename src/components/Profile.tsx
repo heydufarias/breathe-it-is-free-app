@@ -59,11 +59,11 @@ function LinkedinIcon() {
 export function Profile({ currentMode, onClose }: ProfileProps) {
   return (
     <Modal onClose={onClose}>
-      <div className="flex flex-col items-center justify-start">
+      <div className="flex flex-col items-center">
         <div
           className={cn(
             "flex mb-4 gap-[3px]",
-            "text-[25px] sm:text-[28px] font-semibold tracking-tight leading-7"
+            "text-[25px] sm:text-[28px] font-semibold tracking-tight leading-5"
           )}
         >
           <p>du</p>
