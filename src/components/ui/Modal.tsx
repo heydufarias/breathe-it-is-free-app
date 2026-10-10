@@ -9,7 +9,11 @@ interface ModalProps {
   children: ReactNode;
 }
 
-export function Modal({ onClose, maxWidth = "max-w-md", children }: ModalProps) {
+export function Modal({
+  onClose,
+  maxWidth = "max-w-md",
+  children,
+}: ModalProps) {
   return (
     <MotionIn
       onClick={onClose}
@@ -17,7 +21,7 @@ export function Modal({ onClose, maxWidth = "max-w-md", children }: ModalProps) 
       className={cn(
         "fixed inset-0 flex items-center justify-center p-6 z-40",
         "bg-black/10 backdrop-blur-[2px]",
-        "text-[#c1c1c1]",
+        "text-[#c1c1c1]"
       )}
     >
       <style>{`body { overflow: hidden; }`}</style>
@@ -38,14 +42,23 @@ export function Modal({ onClose, maxWidth = "max-w-md", children }: ModalProps) 
             className={cn(
               "flex h-10 w-10 items-center justify-center",
               "mt-2 mr-2 sm:mt-3 sm:mr-3",
-              "rounded-full cursor-pointer",
+              "rounded-full cursor-pointer"
             )}
           >
-            <X className="h-6 hover:sm:scale-110 transition-transform duration-200" strokeWidth={2.5} />
+            <X
+              className="h-6 hover:sm:scale-110 transition-transform duration-200"
+              strokeWidth={2.5}
+            />
           </button>
         </div>
 
-        <div className="flex flex-col px-8 pb-8 overflow-y-auto min-h-0">
+        <div
+          className={cn(
+            "flex flex-col flex-1 min-h-0 overflow-y-auto",
+            "px-6 pb-6 sm:px-8 sm:pb-8"
+          )}
+          style={{ WebkitOverflowScrolling: "touch" }}
+        >
           {children}
         </div>
       </MotionIn>

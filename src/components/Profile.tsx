@@ -3,10 +3,41 @@ import type { BreathMode } from "../lib/types";
 import { cn } from "../lib/utils";
 import { Modal } from "./ui/Modal";
 import dufariasImage from "../assets/images/dufarias.jpg";
+import type { ReactNode } from "react";
 
 interface ProfileProps {
   currentMode: BreathMode;
   onClose: () => void;
+}
+
+interface SocialLinkProps {
+  href: string;
+  currentMode: BreathMode;
+  className: string;
+  children: ReactNode;
+}
+
+function SocialLink({
+  href,
+  currentMode,
+  className,
+  children,
+}: SocialLinkProps) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(
+        "flex items-center justify-center",
+        modeStyles[currentMode].text,
+        "transition-[filter] duration-300",
+        className
+      )}
+    >
+      {children}
+    </a>
+  );
 }
 
 function GithubIcon() {
@@ -28,18 +59,18 @@ function LinkedinIcon() {
 export function Profile({ currentMode, onClose }: ProfileProps) {
   return (
     <Modal onClose={onClose}>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center justify-start">
         <div
           className={cn(
-            "flex gap-1",
-            "text-[24px] sm:text-[28px] tracking-tight font-semibold"
+            "flex mb-4 gap-[3px]",
+            "text-[25px] sm:text-[28px] font-semibold tracking-tight leading-7"
           )}
         >
           <p>du</p>
           <p>farias</p>
         </div>
 
-        <div className="w-full max-w-56 mb-2 aspect-square rounded-3xl overflow-hidden">
+        <div className="w-full max-w-56 mb-3 aspect-square rounded-3xl overflow-hidden">
           <img
             src={dufariasImage}
             alt="du farias"
@@ -47,40 +78,26 @@ export function Profile({ currentMode, onClose }: ProfileProps) {
           />
         </div>
 
-        <p className="text-[14px] sm:text-[15px] text-center font-medium leading-4 opacity-70 mb-5">
+        <p className="text-[15px] sm:text-[16px] text-center font-medium leading-4 opacity-70 mb-6">
           Software Developer | Product Engineer
         </p>
 
-        <p className="text-[19px] sm:text-[23px] text-center font-medium leading-6 mb-6">
-          I like to build meaningful things. (:
-        </p>
-
         <div className="flex gap-5">
-          <a
+          <SocialLink
             href="https://github.com/heydufarias"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              "flex items-center justify-center",
-              modeStyles[currentMode].text,
-              "transition-[filter] duration-300 opacity-90 hover:opacity-100"
-            )}
+            currentMode={currentMode}
+            className="opacity-90 hover:opacity-100"
           >
             <GithubIcon />
-          </a>
+          </SocialLink>
 
-          <a
+          <SocialLink
             href="https://linkedin.com/in/heydufarias"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={cn(
-              "flex items-center justify-center",
-              modeStyles[currentMode].text,
-              "transition-[filter] duration-300 opacity-100 sm:opacity-80 hover:opacity-100"
-            )}
+            currentMode={currentMode}
+            className="opacity-100 sm:opacity-80 hover:opacity-100"
           >
             <LinkedinIcon />
-          </a>
+          </SocialLink>
         </div>
       </div>
     </Modal>
