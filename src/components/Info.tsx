@@ -43,17 +43,19 @@ export function Info({ onClose }: InfoProps) {
               >
                 {t(`info.modesSection.${mode}.pattern`)}
               </p>
-              <p
-                className={cn(
-                  "-mt-0.5",
-                  "text-[14px] font-semibold tracking-normal leading-4",
-                  "opacity-50",
-                  modeStyles[mode].text,
-                )}
-              >
-                {t(`info.modesSection.${mode}.pattern`)}
-              </p>
 
+              <p className="mt-1.5 text-[16px] font-medium leading-4.5">
+                {t(`info.modesSection.${mode}.description`)}
+              </p>
+              <p className="mt-1.5 text-[16px] font-medium leading-4.5">
+                {t(`info.modesSection.${mode}.description`)}
+              </p>
+              <p className="mt-1.5 text-[16px] font-medium leading-4.5">
+                {t(`info.modesSection.${mode}.description`)}
+              </p>
+              <p className="mt-1.5 text-[16px] font-medium leading-4.5">
+                {t(`info.modesSection.${mode}.description`)}
+              </p>
               <p className="mt-1.5 text-[16px] font-medium leading-4.5">
                 {t(`info.modesSection.${mode}.description`)}
               </p>
