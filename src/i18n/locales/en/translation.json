@@ -11,14 +11,17 @@
   "info": {
     "description": "Breathe is a minimalist breathing app with visual guidance to help you relax, focus, or wind down before bed.",
     "modesSection": {
-      "title": "Modes:",
+      "title": "Modes",
       "relax": {
+        "pattern": "5s Inhale · 5s Exhale",
         "description": "Equal, slow inhales and exhales create a steady rhythm that can help you relax."
       },
       "focus": {
+        "pattern": "4s Inhale · 4s Hold · 4s Exhale · 4s Hold",
         "description": "Counting the four phases directs your attention to your breath and helps you stay focused."
       },
       "sleep": {
+        "pattern": "4s Inhale · 7s Hold · 8s Exhale",
         "description": "The slow 4–7–8 rhythm offers a quiet, repeatable breathing practice to help you wind down before sleep."
       }
     }
