@@ -36,7 +36,7 @@ export function Modal({
           "bg-white rounded-4xl overflow-hidden tracking-tight"
         )}
       >
-        <div className="flex w-full items-end justify-end">
+        <div className="flex w-full shrink-0 items-end justify-end">
           <button
             onClick={onClose}
             className={cn(
@@ -54,10 +54,14 @@ export function Modal({
 
         <div
           className={cn(
-            "flex flex-col flex-1 min-h-0 overflow-y-auto",
+            "min-h-0 overflow-y-auto overscroll-contain",
+            "max-h-[calc(70vh-3rem)]",
             "px-8 pb-8"
           )}
-          style={{ WebkitOverflowScrolling: "touch" }}
+          style={{
+            WebkitOverflowScrolling: "touch",
+            touchAction: "pan-y",
+          }}
         >
           {children}
         </div>
