@@ -74,7 +74,7 @@ export function Profile({ currentMode, onClose }: ProfileProps) {
           <img
             src={dufariasImage}
             alt="du farias"
-            className="w-full h-full object-cover grayscale"
+            className="w-full h-full object-cover"
           />
         </div>
 
