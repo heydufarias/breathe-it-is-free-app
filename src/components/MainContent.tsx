@@ -113,14 +113,10 @@ export function MainContent() {
           className={cn(
             "absolute flex flex-col h-full w-full items-center justify-center",
             "text-[30px] xs:text-[36px] sm:text-[40px] tracking-tight text-center",
-            {
-              relax: "leading-6 xs:leading-8",
-              focus: "leading-5.5 xs:leading-7.5",
-              sleep: "leading-6 xs:leading-8",
-            }[currentMode]
+            "leading-6 xs:leading-8"
           )}
         >
-          {t(`session.done.${currentMode}`).split(" ").map((word, index) => (
+          {t("session.done").split(" ").map((word, index) => (
             <span key={index} className="block">
               {word}
             </span>
