@@ -96,7 +96,7 @@ export function MainContent() {
             <MotionInSpan
               key={phaseIndex}
               transition={{ duration: 0.5, ease: "easeIn" }}
-              className="absolute text-[47px] xs:text-[60px] sm:text-[65px] tracking-tight text-center"
+              className="absolute text-[47px] xs:text-[60px] sm:text-[65px] tracking-tighter text-center"
             >
               {t(`session.phases.${currentPhase.label}`)}
             </MotionInSpan>
