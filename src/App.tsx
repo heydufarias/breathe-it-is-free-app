@@ -8,6 +8,7 @@ import { Header } from "./components/Header";
 import { Info } from "./components/Info";
 import { MainContent } from "./components/MainContent";
 import { Profile } from "./components/Profile";
+import { RecordingScreen } from "./components/RecordingScreen";
 import { useFavicon } from "./hooks/useFavicon";
 import { usePreloadImage } from "./hooks/usePreloadImage";
 import { modeStyles } from "./lib/consts";
@@ -21,6 +22,7 @@ export default function App() {
   );
   const [showInfo, setShowInfo] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
+  const isRecordingRoute = window.location.pathname.replace(/\/+$/, "") === "/recording";
 
   const openInfo = () => setShowInfo(true);
   const closeInfo = () => setShowInfo(false);
@@ -34,6 +36,10 @@ export default function App() {
 
   useFavicon(currentMode);
   usePreloadImage(dufariasImage);
+
+  if (isRecordingRoute) {
+    return <RecordingScreen />;
+  }
 
   return (
     <div

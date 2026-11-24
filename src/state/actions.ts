@@ -9,14 +9,18 @@ function saveCycles(cycles: number) {
 export function setMode(mode: BreathMode) {
   localStorage.setItem("breathMode", mode);
 
-  state.set((value) => ({
-    ...value,
-    currentMode: mode,
-    currentPhase:
-      value.sessionStage === "prepare"
-        ? preparePhase
-        : breathingPatterns[mode][value.phaseIndex],
-  }));
+  state.set((value) => {
+    const isPreparing = value.sessionStage === "prepare";
+    const currentPhase = isPreparing ? preparePhase : breathingPatterns[mode][0];
+
+    return {
+      ...value,
+      currentMode: mode,
+      currentPhase,
+      phaseIndex: 0,
+      secondsLeft: isPreparing ? value.secondsLeft : currentPhase.seconds,
+    };
+  });
 }
 
 export function decreaseCycles() {
@@ -35,16 +39,22 @@ export function increaseCycles() {
   });
 }
 
-export function startSession() {
-  state.set((value) => ({
-    ...value,
-    sessionStage: "prepare",
-    currentCycle: 1,
-    phaseIndex: 0,
-    currentPhase: preparePhase,
-    secondsLeft: preparePhase.seconds,
-    isTransitioning: true,
-  }));
+export function startSession(skipPreparation = false) {
+  state.set((value) => {
+    const currentPhase = skipPreparation
+      ? breathingPatterns[value.currentMode][0]
+      : preparePhase;
+
+    return {
+      ...value,
+      sessionStage: skipPreparation ? "active" : "prepare",
+      currentCycle: 1,
+      phaseIndex: 0,
+      currentPhase,
+      secondsLeft: currentPhase.seconds,
+      isTransitioning: true,
+    };
+  });
 
   setTimeout(() => {
     state.set((value) => ({

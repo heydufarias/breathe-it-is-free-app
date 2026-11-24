@@ -15,7 +15,11 @@ const LARGE_SCALE = 4.0;
 const MATERIAL_OPACITY = 0.6;
 const REFERENCE_VIEWPORT = 11.79;
 
-export function Blob() {
+interface BlobProps {
+  startSmall?: boolean;
+}
+
+export function Blob({ startSmall = false }: BlobProps) {
   const currentMode = state.use((value) => value.currentMode);
   const sessionStage = state.use((value) => value.sessionStage);
   const currentPhase = state.use((value) => value.currentPhase);
@@ -34,7 +38,9 @@ export function Blob() {
     }),
   );
 
-  const [targetScale, setTargetScale] = useState(IDLE_SCALE);
+  const [targetScale, setTargetScale] = useState(
+    startSmall ? SMALL_SCALE : IDLE_SCALE,
+  );
   const [duration, setDuration] = useState(4000);
   const [rotYTarget, setRotYTarget] = useState(0);
 
@@ -133,8 +139,7 @@ export function Blob() {
 
     if (meshRef.current) {
       const size = Math.min(viewport.width, viewport.height);
-      const responsiveScale =
-        scale.get() * (size / REFERENCE_VIEWPORT);
+      const responsiveScale = scale.get() * (size / REFERENCE_VIEWPORT);
 
       meshRef.current.rotation.y = rotY.get();
       meshRef.current.scale.setScalar(responsiveScale);

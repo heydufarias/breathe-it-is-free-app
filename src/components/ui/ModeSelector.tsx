@@ -1,16 +1,18 @@
 import { useTranslation } from "react-i18next";
 import { MODES, modeStyles } from "../../lib/consts";
-import type { BreathMode } from "../../lib/types";
+import type { BreathMode, Language } from "../../lib/types";
 import { cn } from "../../lib/utils";
 
 interface ModeSelectorProps {
   currentMode: BreathMode;
   onModeChange: (mode: BreathMode) => void;
+  language?: Language;
 }
 
 export function ModeSelector({
   currentMode,
   onModeChange,
+  language,
 }: ModeSelectorProps) {
   const { t } = useTranslation();
 
@@ -46,7 +48,7 @@ export function ModeSelector({
           )}
         >
           <span>
-            {t(`modes.${mode}`)}
+            {language ? t(`modes.${mode}`, { lng: language }) : t(`modes.${mode}`)}
           </span>
         </button>
       ))}
