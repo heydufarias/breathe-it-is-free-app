@@ -40,6 +40,24 @@ npm install
 npm run dev
 ```
 
+## Record a Reel
+
+From the project folder, run:
+
+```bash
+npm run record:reel
+```
+
+This records a 20-second video in `recordings/` by default. Google Chrome must be installed. The script opens the recording screen and exports an MP4 at 1080 × 1920, 30 fps, using H.264 High.
+
+Choose a duration and breathing mode with these options:
+
+```bash
+npm run record:reel -- --duration 30 --mode focus
+```
+
+Duration can be 3–300 seconds. Available modes are `relax`, `focus`, and `sleep`. To choose a different output path, add `--output path/to/video.mp4`.
+
 ## License
 
 See [LICENSE](./LICENSE) for details.

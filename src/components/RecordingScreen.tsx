@@ -7,16 +7,12 @@ import { cn } from "../lib/utils";
 import { advanceSession, setMode, startSession } from "../state/actions";
 import { state } from "../state/state";
 import { MotionInSpan } from "./motion/MotionInSpan";
-import { Blob } from "./three/Blob";
+import { Blob as BreathingBlob } from "./three/Blob";
 import { ModeSelector } from "./ui/ModeSelector";
-
-const wordmarkLines = [
-  { text: "Breathe,", className: "" },
-  { text: "it is free.", className: "-mt-1.5" },
-];
 
 export function RecordingScreen() {
   const { t } = useTranslation();
+  const captureSession = new URLSearchParams(window.location.search).has("capture");
   const currentMode = state.use((value) => value.currentMode);
   const sessionStage = state.use((value) => value.sessionStage);
   const currentPhase = state.use((value) => value.currentPhase);
@@ -24,7 +20,6 @@ export function RecordingScreen() {
   const secondsLeft = state.use((value) => value.secondsLeft);
   const [showModeSelector, setShowModeSelector] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
-
   useEffect(() => {
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key.toLowerCase() === "m") {
@@ -41,14 +36,22 @@ export function RecordingScreen() {
   }, []);
 
   useLayoutEffect(() => {
-    if (sessionStage === "idle") {
+    if (sessionStage === "idle" && !captureSession) {
       startSession();
     }
 
     if (sessionStage === "done") {
       startSession(true);
     }
-  }, [sessionStage]);
+  }, [sessionStage, captureSession]);
+
+  useEffect(() => {
+    if (!captureSession) return;
+
+    const startCaptureSession = () => startSession();
+    window.addEventListener("breathe:recording-start", startCaptureSession);
+    return () => window.removeEventListener("breathe:recording-start", startCaptureSession);
+  }, [captureSession]);
 
   useEffect(() => {
     if (sessionStage !== "prepare" || introComplete) {
@@ -73,100 +76,81 @@ export function RecordingScreen() {
   }, [sessionStage, secondsLeft, introComplete]);
 
   return (
-    <main className="flex h-dvh w-full items-center justify-center bg-black">
+    <main className="relative flex h-dvh w-full items-center justify-center bg-black">
       <div
+        data-recording-frame
         style={{
           width: "min(100vw, 56.25dvh)",
           height: "min(100dvh, 177.7778vw)",
         }}
         className={cn(
-          "relative flex flex-col overflow-hidden",
+          "relative flex items-center justify-center overflow-hidden",
           "font-helvetica font-semibold transition-colors duration-500",
           modeStyles[currentMode].bgSurface,
           modeStyles[currentMode].text,
         )}
       >
-        <div className="relative h-16 shrink-0">
-          {showModeSelector && (
-            <div className="absolute inset-x-0 top-1 z-20 mx-auto w-full max-w-120 px-3">
-              <ModeSelector
-                currentMode={currentMode}
-                onModeChange={(mode) => {
-                  setMode(mode);
-                  setShowModeSelector(false);
-                }}
-                language="en"
-              />
-            </div>
-          )}
-        </div>
+        {showModeSelector && (
+          <div className="absolute inset-x-0 top-1 z-20 mx-auto w-full max-w-120 px-3">
+            <ModeSelector
+              currentMode={currentMode}
+              onModeChange={(mode) => {
+                setMode(mode);
+                setShowModeSelector(false);
+              }}
+              language="en"
+            />
+          </div>
+        )}
 
-        <div className="relative h-29 w-full shrink-0">
-          <div
-            className={cn(
-              "absolute inset-0 flex flex-col items-center justify-center gap-1.5",
-              "px-3 text-center tracking-tight",
-              "text-[32px]/[26px]",
-            )}
+        <div className="pointer-events-none absolute inset-0 w-full px-12">
+          <Canvas
+            camera={{ position: [0, 0, 22], fov: 30 }}
           >
-            Now it's your time to take a break and breathe.
-          </div>
+            <ambientLight intensity={1.5} />
+            <directionalLight position={[75, 75, 5]} intensity={0.8} />
+            <directionalLight position={[-5, -5, 2]} intensity={1.8} />
+            <BreathingBlob startSmall />
+          </Canvas>
         </div>
-
-        <div className="relative flex w-full flex-1 justify-center">
-          <div className="pointer-events-none absolute inset-0 w-full px-2">
-            <Canvas camera={{ position: [0, 0, 22], fov: 30 }}>
-              <ambientLight intensity={1.5} />
-              <directionalLight position={[75, 75, 5]} intensity={0.8} />
-              <directionalLight position={[-5, -5, 2]} intensity={1.8} />
-              <Blob startSmall />
-            </Canvas>
-          </div>
-          <div
-            className={cn(
-              "pointer-events-none absolute inset-0 flex items-center justify-center",
-              modeStyles[currentMode].text,
-            )}
-          >
-            <AnimatePresence mode="wait">
-              {introComplete && currentPhase && (
-                <MotionInSpan
-                  key={`${currentMode}-${sessionStage}-${phaseIndex}`}
-                  transition={{ duration: 0.5, ease: "easeIn" }}
-                  className="absolute text-[56px] tracking-tighter text-center"
-                >
-                  {t(`session.phases.${currentPhase.label}`, { lng: "en" })}
-                </MotionInSpan>
-              )}
-            </AnimatePresence>
-          </div>
-        </div>
-
-        <footer
+        <div
           className={cn(
-            "relative flex w-full shrink-0 items-center justify-between px-4 py-5",
-            "text-[22px] tracking-tight leading-none",
+            "pointer-events-none absolute inset-0 flex items-center justify-center",
+            modeStyles[currentMode].text,
           )}
         >
-          <span className="absolute inset-x-0 text-center">
-            Check on breatheitisfree.app
-          </span>
-
-          <div
-            aria-label="Breathe, it is free."
-            className={cn(
-              "absolute right-1 bottom-2.5 flex cursor-default flex-col",
-              "text-[30px] tracking-tight leading-none",
-              modeStyles[currentMode].text,
+          <AnimatePresence mode="wait">
+            {introComplete && currentPhase && (
+              <MotionInSpan
+                key={`${currentMode}-${sessionStage}-${phaseIndex}`}
+                transition={{ duration: 0.5, ease: "easeIn" }}
+                className="absolute text-center text-[144px] tracking-tighter"
+                data-capture-text="phase"
+                style={{
+                  textRendering: "geometricPrecision",
+                  WebkitTextStroke: "0.25px currentColor",
+                }}
+              >
+                {t(`session.phases.${currentPhase.label}`, { lng: "en" })}
+              </MotionInSpan>
             )}
-          >
-            {wordmarkLines.map(({ text, className }) => (
-              <span key={text} className={className}>
-                {text}
-              </span>
-            ))}
-          </div>
-        </footer>
+          </AnimatePresence>
+        </div>
+        <div
+          aria-label="Breathe, it is free."
+          className={cn(
+            "pointer-events-none absolute left-1/2 top-[75%] z-10 flex -translate-x-1/2 flex-col",
+            "text-center text-[92px] tracking-tight leading-none",
+            modeStyles[currentMode].text,
+          )}
+          style={{
+            textRendering: "geometricPrecision",
+            WebkitTextStroke: "0.25px currentColor",
+          }}
+        >
+          <span data-capture-text>Breathe,</span>
+          <span className="-mt-[0.18em]" data-capture-text>it is free.</span>
+        </div>
       </div>
     </main>
   );
